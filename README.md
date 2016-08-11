@@ -1,8 +1,11 @@
-# Vanilla
-My default starting point for all front-end builds
+# Daisy Feuss
+A playground (currently) for front end experiments
 
 ### New here?
-Download Vanilla and run `$ npm install --global gulp && npm install` in that directory to get started.
+1. Ensure you have (NodeJS)[https://nodejs.org/en/] installed
+2. Download `daisyfeuss`
+3. Navigate to the directory in your console
+4. Run `$ npm install --global gulp && npm install` to get started
 
 ### Getting Started
 1. Run `gulp` to build the project
