@@ -2,10 +2,9 @@
 A playground (currently) for front end experiments
 
 ### New here?
-1. Ensure you have (NodeJS)[https://nodejs.org/en/] installed
-2. Download `daisyfeuss`
-3. Navigate to the directory in your console
-4. Run `$ npm install --global gulp && npm install` to get started
+1. Ensure you have [NodeJS](https://nodejs.org/en/) installed
+2. Download `daisyfeuss` & navigate to the directory in your command-line tool
+3. Run `$ npm install --global gulp && npm install` to get started
 
 ### Getting Started
 1. Run `gulp` to build the project
