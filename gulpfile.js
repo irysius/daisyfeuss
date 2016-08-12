@@ -9,7 +9,7 @@ var
   bower         = require('gulp-bower'),
   cleanCSS      = require('gulp-clean-css'),
   del           = require('del'),
-  deploy        = require('gulp-gh-pages'),
+  ghPages       = require('gulp-gh-pages'),
   install       = require("gulp-install"),
   notify        = require('gulp-notify'),
   reload        = browserSync.reload,
@@ -117,7 +117,7 @@ gulp.task(tasks.copy, function () {
 // TODO: Create separate dist task from the temp task
 gulp.task('deploy', function () {
   return gulp.src(basePaths.temp + wildCard)
-    .pipe(ghPages())
+    .pipe(ghPages());
 });
 
 // Watch files for changes & reload
