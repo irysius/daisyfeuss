@@ -26,23 +26,23 @@ var wildCard =  '**/*';
 var basePaths = {
   src:          'app/',
   temp:         '_temp/',
-  dest:         '_dist/',
+  dist:         '_dist/',
   bower:        'bower_components/',
 };
 
 var paths = {
   pages: {
     src:        basePaths.src + 'views/' + wildCard,
-    dest:       basePaths.dest,
+    temp:       basePaths.temp,
   },
   styles: {
     src:        basePaths.src + 'assets/styles/' + wildCard,
-    dest:       basePaths.dest,
+    temp:       basePaths.temp,
     s:          basePaths.src + 'assets/styles/styles.styl',
   },
   bower: {
     src:        basePaths.bower + wildCard,
-    dest:       basePaths.dest,
+    temp:       basePaths.temp,
   },
   // extras:       ['assets/favicons/**/*', 'assets/checkout/**/*'],
 };
@@ -73,12 +73,12 @@ var autoprefixerBrowsers = [
 // ---------------------------------
 
 // Clean dist directory
-gulp.task('clean', del.bind(null, [basePaths.dest], {dot: true}));
+gulp.task('clean', del.bind(null, [basePaths.temp], {dot: true}));
 
 // Pages
 gulp.task(tasks.pages, function() {
   return gulp.src(paths.pages.src)
-    .pipe(gulp.dest(basePaths.dest)); // exports .html
+    .pipe(gulp.dest(basePaths.temp)); // exports .html
 });
 
 // Styles
@@ -86,29 +86,30 @@ gulp.task(tasks.styles, function() {
   return gulp.src(paths.styles.s)
     .pipe(sourcemaps.init())
     .pipe(stylus({ style: 'expanded' }))
-    .pipe(sourcemaps.write())
     .pipe(autoprefixer({browsers: autoprefixerBrowsers}))
-    .pipe(gulp.dest(paths.styles.dest)) // exports *.css
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(paths.styles.temp)) // exports *.css
     .pipe(cleanCSS({debug: true}, function(details) {
       console.log('Uncompressed (.css):   ' + details.stats.originalSize + ' bytes');
       console.log('Compressed (.min.css): ' + details.stats.minifiedSize + ' bytes');
     }))
     .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest(paths.styles.dest)) // exports *.min.css
+    .pipe(gulp.dest(paths.styles.temp)) // exports *.min.css
     .pipe(reload({stream: true}))
-    .pipe(notify({ message: 'Styles task complete' }));
+    .pipe(notify({ message: 'Styles update complete' }));
 });
 
 // Install bower components and npm packages using gulp
 gulp.task('install', function () {
   gulp.src(['./bower.json', './package.json'])
-    .pipe(install({allowRoot: true}));
+    .pipe(install({allowRoot: true}))
+    .pipe(notify({ message: 'Update complete' }));
 });
 
 // Copy bower_components over
 gulp.task(tasks.copy, function () {
   return gulp.src(paths.bower.src)
-    .pipe(gulp.dest(paths.bower.dest));
+    .pipe(gulp.dest(paths.bower.temp));
 });
 
 // Watch files for changes & reload
@@ -121,7 +122,7 @@ gulp.task('serve', [tasks.styles], function () {
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
     // https: true,
-    server: ['.tmp', basePaths.dest]
+    server: ['.tmp', basePaths.temp]
   });
 
   gulp.watch([paths.styles.src], [tasks.styles, reload]);
