@@ -6,8 +6,10 @@ var
   gulp          = require('gulp'),
   autoprefixer  = require('gulp-autoprefixer'),
   browserSync   = require('browser-sync'),
+  bower         = require('gulp-bower'),
+  cleanCSS      = require('gulp-clean-css'),
   del           = require('del'),
-  minifycss     = require('gulp-minify-css'),
+  install       = require("gulp-install"),
   notify        = require('gulp-notify'),
   reload        = browserSync.reload,
   rename        = require('gulp-rename'),
@@ -75,7 +77,6 @@ gulp.task('clean', del.bind(null, [basePaths.dest], {dot: true}));
 // Pages
 gulp.task(tasks.pages, function() {
   return gulp.src(paths.pages.src)
-    // .pipe(jade({pretty: true}))
     .pipe(gulp.dest(basePaths.dest)); // exports .html
 });
 
@@ -86,14 +87,23 @@ gulp.task(tasks.styles, function() {
     .pipe(autoprefixer({browsers: autoprefixerBrowsers}))
     .pipe(gulp.dest(paths.styles.dest)) // exports *.css
     .pipe(rename({suffix: '.min'}))
-    .pipe(minifycss())
+    .pipe(cleanCSS({debug: true}, function(details) {
+      console.log(details.name + ': ' + details.stats.originalSize + ' bytes');
+      console.log(details.name + ': ' + details.stats.minifiedSize + ' bytes');
+    }))
     .pipe(gulp.dest(paths.styles.dest)) // exports *.min.css
     .pipe(reload({stream: true}))
     .pipe(notify({ message: 'Styles task complete' }));
 });
 
+// Install bower components and npm packages using gulp
+gulp.task('install', function () {
+  gulp.src(['./bower.json', './package.json'])
+    .pipe(install({allowRoot: true}));
+});
+
 // Copy bower_components over
-gulp.task('tasks.copy', function () {
+gulp.task(tasks.copy, function () {
   return gulp.src(paths.bower.src)
     .pipe(gulp.dest(paths.bower.dest));
 });
@@ -117,5 +127,5 @@ gulp.task('serve', [tasks.styles], function () {
 
 // Default task
 gulp.task('default', ['clean'], function (cb) {
-  runSequence(tasks.styles, [tasks.pages, 'tasks.copy'], cb);
+  runSequence(tasks.styles, [tasks.pages, tasks.copy], cb);
 });

@@ -1,0 +1,26 @@
+{
+  "name": "daisyfeuss",
+  "description": "Static Site Generator",
+  "main": "",
+  "authors": [
+    "Kevin Lee <kevin.lee@ceridian.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/livekeen/daisyfeuss",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "dojo": "dojo/dojo#^1.11.2",
+    "dijit": "dojo/dijit#^1.11.2",
+    "dojox": "dojo/dojox#^1.11.2",
+    "dojo-util": "dojo/util#^1.11.2",
+    "dgrid": "^1.1.0"
+  }
+}
