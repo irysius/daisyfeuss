@@ -9,6 +9,7 @@ var
   bower         = require('gulp-bower'),
   cleanCSS      = require('gulp-clean-css'),
   del           = require('del'),
+  deploy        = require('gulp-gh-pages'),
   install       = require("gulp-install"),
   notify        = require('gulp-notify'),
   reload        = browserSync.reload,
@@ -110,6 +111,13 @@ gulp.task('install', function () {
 gulp.task(tasks.copy, function () {
   return gulp.src(paths.bower.src)
     .pipe(gulp.dest(paths.bower.temp));
+});
+
+// Deploy to github pages
+// TODO: Create separate dist task from the temp task
+gulp.task('deploy', function () {
+  return gulp.src(basePaths.temp + wildCard)
+    .pipe(ghPages())
 });
 
 // Watch files for changes & reload
