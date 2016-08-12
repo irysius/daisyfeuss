@@ -83,14 +83,16 @@ gulp.task(tasks.pages, function() {
 // Styles
 gulp.task(tasks.styles, function() {
   return gulp.src(paths.styles.s)
+    .pipe(sourcemaps.init())
     .pipe(stylus({ style: 'expanded' }))
     .pipe(autoprefixer({browsers: autoprefixerBrowsers}))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.styles.dest)) // exports *.css
-    .pipe(rename({suffix: '.min'}))
     .pipe(cleanCSS({debug: true}, function(details) {
-      console.log(details.name + ': ' + details.stats.originalSize + ' bytes');
-      console.log(details.name + ': ' + details.stats.minifiedSize + ' bytes');
+      console.log('Uncompressed (.css):   ' + details.stats.originalSize + ' bytes');
+      console.log('Compressed (.min.css): ' + details.stats.minifiedSize + ' bytes');
     }))
+    .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest(paths.styles.dest)) // exports *.min.css
     .pipe(reload({stream: true}))
     .pipe(notify({ message: 'Styles task complete' }));
