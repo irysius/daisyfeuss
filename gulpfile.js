@@ -25,6 +25,7 @@ var wildCard =  '**/*';
 
 var basePaths = {
   src:          'app/',
+  temp:         '_temp/',
   dest:         '_dist/',
   bower:        'bower_components/',
 };
@@ -85,8 +86,8 @@ gulp.task(tasks.styles, function() {
   return gulp.src(paths.styles.s)
     .pipe(sourcemaps.init())
     .pipe(stylus({ style: 'expanded' }))
-    .pipe(autoprefixer({browsers: autoprefixerBrowsers}))
     .pipe(sourcemaps.write())
+    .pipe(autoprefixer({browsers: autoprefixerBrowsers}))
     .pipe(gulp.dest(paths.styles.dest)) // exports *.css
     .pipe(cleanCSS({debug: true}, function(details) {
       console.log('Uncompressed (.css):   ' + details.stats.originalSize + ' bytes');
