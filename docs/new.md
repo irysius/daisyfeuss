@@ -2,11 +2,13 @@
 These instructions are meant to help guide you through the process so that you can contribute to the project
 
 ### Don't have a Github account?
-- Sign up for [Github](https://github.com)
+- Sign up for a [Github account](https://github.com)
 
-### Getting access to repository
-- Ensure you have been given collaborator access to this project
-- Install [this application](https://desktop.github.com)
+### Getting access to the project
+- *Before starting:* Ensure you have been given collaborator access to this project
+- Download and Install [this application](https://desktop.github.com)
+- Enter your credentials:
+![Login](github-onboarding--1.png)
 - Clone the project TODO: WRITE EXPLICIT INSTRUCTIONS
 
 
