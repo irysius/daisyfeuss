@@ -9,7 +9,8 @@ const
   bower         = require('gulp-bower'),
   cleanCSS      = require('gulp-clean-css'),
   del           = require('del'),
-  ghPages       = require('gulp-gh-pages'),
+  ghPages       = require('gulp-gh-pages')
+  gulpif        = require('gulp-if'),
   imagemin      = require('gulp-imagemin'),
   install       = require('gulp-install'),
   newer         = require('gulp-newer'),
@@ -82,16 +83,18 @@ var autoprefixerBrowsers = [
 // ---------------------------------
 
 // Clean dist directory
-gulp.task('clean', del.bind(null, [basePaths.temp], {dot: true}));
+gulp.task('clean', del.bind(null, [
+  basePaths.temp
+], {dot: true}));
 
 // Pages
-gulp.task(tasks.pages, function() {
+gulp.task(tasks.pages, () => {
   return gulp.src(paths.pages.src)
-    .pipe(gulp.dest(basePaths.temp)); // exports .html
+    .pipe(gulp.dest(basePaths.temp)) // exports .html
 });
 
 // Styles
-gulp.task(tasks.styles, function() {
+gulp.task(tasks.styles, () => {
   return gulp.src(paths.styles.s)
     .pipe(sourcemaps.init())
     .pipe(stylus({ style: 'expanded' }))
@@ -105,7 +108,7 @@ gulp.task(tasks.styles, function() {
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest(paths.styles.temp)) // exports *.min.css
     .pipe(reload({stream: true}))
-    .pipe(notify({ message: 'Styles update complete' }));
+    .pipe(notify({ message: 'Styles update complete' }))
 });
 
 // Images
@@ -125,20 +128,20 @@ gulp.task('install', () =>
 );
 
 // Copy bower_components over
-gulp.task(tasks.copy, function () {
+gulp.task(tasks.copy, () => {
   return gulp.src(paths.bower.src)
-    .pipe(gulp.dest(paths.bower.temp));
+    .pipe(gulp.dest(paths.bower.temp))
 });
 
 // Deploy to github pages
 // TODO: Create separate dist task from the temp task
-gulp.task('deploy', function () {
+gulp.task('deploy', () => {
   return gulp.src(basePaths.temp + wildCard)
-    .pipe(ghPages());
+    .pipe(ghPages())
 });
 
 // Watch files for changes & reload
-gulp.task('serve', [tasks.styles], function () {
+gulp.task('serve', [tasks.styles], () => {
   browserSync({
     notify: false,
     // Customize the BrowserSync console logging prefix
@@ -148,14 +151,14 @@ gulp.task('serve', [tasks.styles], function () {
     //       will present a certificate warning in the browser.
     // https: true,
     server: ['.tmp', basePaths.temp]
-  });
+  })
 
-  gulp.watch([paths.images.src], [tasks.images, reload]);
-  gulp.watch([paths.styles.src], [tasks.styles, reload]);
-  gulp.watch([paths.pages.src], [tasks.pages, reload]);
+  gulp.watch([paths.images.src], [tasks.images, reload])
+  gulp.watch([paths.styles.src], [tasks.styles, reload])
+  gulp.watch([paths.pages.src], [tasks.pages, reload])
 });
 
 // Default task
-gulp.task('default', ['clean'], function (cb) {
-  runSequence(tasks.styles, [tasks.pages, tasks.images, tasks.copy], cb);
+gulp.task('default', callback => {
+  runSequence('clean', tasks.styles, [tasks.pages, tasks.images, tasks.copy], callback);
 });
