@@ -2,7 +2,7 @@
 // :: Load Gulp & plugins we'll use
 // ---------------------------------
 
-var
+const
   gulp          = require('gulp'),
   autoprefixer  = require('gulp-autoprefixer'),
   browserSync   = require('browser-sync'),
@@ -10,7 +10,8 @@ var
   cleanCSS      = require('gulp-clean-css'),
   del           = require('del'),
   ghPages       = require('gulp-gh-pages'),
-  install       = require("gulp-install"),
+  imagemin      = require('gulp-imagemin'),
+  install       = require('gulp-install'),
   notify        = require('gulp-notify'),
   reload        = browserSync.reload,
   rename        = require('gulp-rename'),
@@ -40,6 +41,10 @@ var paths = {
     src:        basePaths.src + 'assets/styles/' + wildCard,
     temp:       basePaths.temp,
     s:          basePaths.src + 'assets/styles/styles.styl',
+  },
+  images: {
+    src:        basePaths.src + 'assets/images/' + wildCard,
+    temp:       basePaths.temp + 'img/',
   },
   bower: {
     src:        basePaths.bower + wildCard,
@@ -100,6 +105,14 @@ gulp.task(tasks.styles, function() {
     .pipe(notify({ message: 'Styles update complete' }));
 });
 
+// Images
+gulp.task(tasks.images, () =>
+  gulp.src(paths.images.src)
+    .pipe(imagemin())
+    .pipe(gulp.dest(paths.images.temp))
+    .pipe(notify({ message: 'Images task complete' }))
+);
+
 // Install bower components and npm packages using gulp
 gulp.task('install', function () {
   gulp.src(['./bower.json', './package.json'])
@@ -139,5 +152,5 @@ gulp.task('serve', [tasks.styles], function () {
 
 // Default task
 gulp.task('default', ['clean'], function (cb) {
-  runSequence(tasks.styles, [tasks.pages, tasks.copy], cb);
+  runSequence(tasks.styles, [tasks.pages, tasks.images, tasks.copy], cb);
 });

@@ -1,49 +1,53 @@
 body {
-  font-family: "Open Sans", Arial, sans-serif;
-  font-size: 8pt; /* following app's default */
-  margin: 0;
+  font-family: "Open Sans", Arial, sans-serif
+  font-size: 8pt /* following app's default */
+  margin: 0
 }
 
 
 .dgrid {
-  border: 0;
-  font-family: Arial, sans-serif;
+  border: 0
+  font-family: Arial, sans-serif
 }
 
 .grid-container {
-  overflow-x: auto;
-  overflow-y: hidden;
-  table-layout: auto;
-  width: 100%;
+  overflow-x: auto
+  overflow-y: hidden
+  table-layout: auto
+  width: 100%
 }
 
 /* dgrid overrides */
 .dgrid-header, .dgrid-header-row, .dgrid-footer {
-  background: white;
+  background: white
 }
 
 th.dgrid-cell {
   /* targetting header cells */
   /* TODO: add unique class to header cells */
-  border-bottom: 1px solid #1162c2;
-  color: #1162c2;
-  font-weight: 500;
+  border-bottom: 1px solid #1162c2
+  color: #1162c2
+  font-weight: 600
 }
 
-.dgrid-row:nth-child(odd) {
-  background-color: #F8F8F8;
+.dgrid-row {
+  transition: .2s ease-in-out
+}
+
+.dgrid-row:hover {
+  background-color: lighten($light-blue, 90%)
 }
 
 .dgrid-cell {
-  padding: .6rem .9rem;
+  padding: .6rem .9rem
 }
 
 th[class*="dgrid-column-"] {
-  width: 400px;
+  width: 400px
 }
 
 @media (max-width: 768px) {
   .dgrid-row-table {
-    width: 100%;
+    width: 100%
   }
 }
