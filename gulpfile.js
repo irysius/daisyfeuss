@@ -9,7 +9,7 @@ const
   bower         = require('gulp-bower'),
   cleanCSS      = require('gulp-clean-css'),
   del           = require('del'),
-  ghPages       = require('gulp-gh-pages')
+  ghPages       = require('gulp-gh-pages'),
   gulpif        = require('gulp-if'),
   imagemin      = require('gulp-imagemin'),
   install       = require('gulp-install'),
