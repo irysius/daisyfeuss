@@ -102,7 +102,7 @@ gulp.task(tasks.styles, () => {
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.styles.temp)) // exports *.css
     .pipe(cleanCSS({debug: true}, function(details) {
-      console.log('Uncompressed (.css):   ' + details.stats.originalSize + ' bytes');
+      console.log('Uncompressed   (.css): ' + details.stats.originalSize + ' bytes');
       console.log('Compressed (.min.css): ' + details.stats.minifiedSize + ' bytes');
     }))
     .pipe(rename({suffix: '.min'}))
@@ -153,9 +153,9 @@ gulp.task('serve', [tasks.styles], () => {
     server: ['.tmp', basePaths.temp]
   })
 
-  gulp.watch([paths.images.src], [tasks.images, reload])
-  gulp.watch([paths.styles.src], [tasks.styles, reload])
-  gulp.watch([paths.pages.src], [tasks.pages, reload])
+  gulp.watch([paths.images.src],  [tasks.images, reload])
+  gulp.watch([paths.styles.src],  [tasks.styles, reload])
+  gulp.watch([paths.pages.src],   [tasks.pages,  reload])
 });
 
 // Default task
