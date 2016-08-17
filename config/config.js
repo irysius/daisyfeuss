@@ -9,7 +9,7 @@ export default {
   getConfigKeys () {
     let keys;
     try {
-      keys = require(`./${this.environment}`);
+      keys = require(`./config/${this.environment}`);
     } catch (e) {
       throw new Error(`No config file found for environment ${this.environment}`);
     }

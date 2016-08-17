@@ -12,6 +12,7 @@ const
   ghPages       = require('gulp-gh-pages'),
   imagemin      = require('gulp-imagemin'),
   install       = require('gulp-install'),
+  newer         = require('gulp-newer'),
   notify        = require('gulp-notify'),
   reload        = browserSync.reload,
   rename        = require('gulp-rename'),
@@ -110,17 +111,18 @@ gulp.task(tasks.styles, function() {
 // Images
 gulp.task(tasks.images, () =>
   gulp.src(paths.images.src)
+    .pipe(newer(paths.images.temp))
     .pipe(imagemin())
     .pipe(gulp.dest(paths.images.temp))
     .pipe(notify({ message: 'Images task complete' }))
 );
 
 // Install bower components and npm packages using gulp
-gulp.task('install', function () {
+gulp.task('install', () =>
   gulp.src(['./bower.json', './package.json'])
     .pipe(install({allowRoot: true}))
-    .pipe(notify({ message: 'Update complete' }));
-});
+    .pipe(notify({ message: 'Update complete' }))
+);
 
 // Copy bower_components over
 gulp.task(tasks.copy, function () {
@@ -148,6 +150,7 @@ gulp.task('serve', [tasks.styles], function () {
     server: ['.tmp', basePaths.temp]
   });
 
+  gulp.watch([paths.images.src], [tasks.images, reload]);
   gulp.watch([paths.styles.src], [tasks.styles, reload]);
   gulp.watch([paths.pages.src], [tasks.pages, reload]);
 });
