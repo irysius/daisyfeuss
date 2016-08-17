@@ -23,7 +23,9 @@ const
 // :: Variables
 // ---------------------------------
 
-var wildCard =  '**/*';
+// const taskOptions = globalConfig.getConfigKeys();
+
+var wildCard = '**/*';
 
 var basePaths = {
   src:          'app/',
