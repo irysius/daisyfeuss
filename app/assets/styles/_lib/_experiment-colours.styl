@@ -1,0 +1,242 @@
+// ---------------------------------
+//  :: Colours
+// ---------------------------------
+
+// Grey Palette
+$white                      = #ffffff
+$black                      = #2d2926
+
+$grey                       = lighten(black, 50%)
+$grey20                     ?= lighten(black, 80%)
+$grey40                     ?= lighten(black, 60%)
+$grey50                     ?= $grey
+$grey60                     ?= lighten(black, 40%)
+$grey80                     ?= lighten(black, 20%)
+
+// Primary Palette
+$dark-blue                  = #003da5
+$dark-blue20                ?= lighten($dark-blue, 40%)
+$dark-blue40                ?= lighten($dark-blue, 20%)
+$dark-blue50                ?= $dark-blue
+$dark-blue60                ?= darken($dark-blue, 20%)
+$dark-blue80                ?= darken($dark-blue, 40%)
+
+$teal                       = hsl(197, 81, 56) // #32b7ea
+$teal20                     ?= lighten($teal, 40%)
+$teal40                     ?= lighten($teal, 20%)
+$teal50                     ?= $teal
+$teal60                     ?= darken($teal, 20%)
+$teal80                     ?= darken($teal, 40%)
+
+// Secondary Palette
+$green                      = #94cf15
+$green20                    ?= lighten($green, 40%)
+$green40                    ?= lighten($green, 20%)
+$green50                    ?= $green
+$green60                    ?= darken($green, 20%)
+$green80                    ?= darken($green, 40%)
+
+$orange                     = #ffa71a
+$orange20                   ?= lighten($orange, 40%)
+$orange40                   ?= lighten($orange, 20%)
+$orange50                   ?= $orange
+$orange60                   ?= darken($orange, 20%)
+$orange80                   ?= darken($orange, 40%)
+
+$red                        = #e50700
+$red20                      ?= lighten($red, 40%)
+$red40                      ?= lighten($red, 20%)
+$red50                      ?= $red
+$red60                      ?= darken($red, 20%)
+$red80                      ?= darken($red, 40%)
+
+$purple                     = #9600CC
+$purple20                   ?= lighten($purple, 40%)
+$purple40                   ?= lighten($purple, 20%)
+$purple50                   ?= $purple
+$purple60                   ?= darken($purple, 20%)
+$purple80                   ?= darken($purple, 40%)
+
+$gold                       = #FFD000
+$gold20                     ?= lighten($gold, 40%)
+$gold40                     ?= lighten($gold, 20%)
+$gold50                     ?= $gold
+$gold60                     ?= darken($gold, 20%)
+$gold80                     ?= darken($gold, 40%)
+
+
+.colour-strip
+  display: inline-block
+
+.colour-test
+  height: 50px
+  list-style: none
+  padding: 0
+  width: 150px
+
+  &--grey
+    background-color: $grey
+
+    &20
+      background-color: $grey20
+
+    &40
+      background-color: $grey40
+
+    &50
+      background-color: $grey50
+
+    &60
+      background-color: $grey60
+
+    &80
+      background-color: $grey80
+
+  &--dark-blue
+    background-color: $dark-blue
+
+    &20
+      background-color: $dark-blue20
+
+    &40
+      background-color: $dark-blue40
+
+    &50
+      background-color: $dark-blue50
+
+    &60
+      background-color: $dark-blue60
+
+    &80
+      background-color: $dark-blue80
+
+  &--teal
+    background-color: $teal
+
+    &20
+      background-color: $teal20
+
+    &40
+      background-color: $teal40
+
+    &50
+      background-color: $teal50
+
+    &60
+      background-color: $teal60
+
+    &80
+      background-color: $teal80
+
+  &--green
+    background-color: $green
+
+    &20
+      background-color: $green20
+
+    &40
+      background-color: $green40
+
+    &50
+      background-color: $green50
+
+    &60
+      background-color: $green60
+
+    &80
+      background-color: $green80
+
+  &--orange
+    background-color: $orange
+
+    &20
+      background-color: $orange20
+
+    &40
+      background-color: $orange40
+
+    &50
+      background-color: $orange50
+
+    &60
+      background-color: $orange60
+
+    &80
+      background-color: $orange80
+
+  &--red
+    background-color: $red
+
+    &20
+      background-color: $red20
+
+    &40
+      background-color: $red40
+
+    &50
+      background-color: $red50
+
+    &60
+      background-color: $red60
+
+    &80
+      background-color: $red80
+
+  &--purple
+    background-color: $purple
+
+    &20
+      background-color: $purple20
+
+    &40
+      background-color: $purple40
+
+    &50
+      background-color: $purple50
+
+    &60
+      background-color: $purple60
+
+    &80
+      background-color: $purple80
+
+  &--gold
+    background-color: $gold
+
+    &20
+      background-color: $gold20
+
+    &40
+      background-color: $gold40
+
+    &50
+      background-color: $gold50
+
+    &60
+      background-color: $gold60
+
+    &80
+      background-color: $gold80
+
+// ---------------------------------
+//  :: Colour Themes
+// ---------------------------------
+
+// Common Elements
+$body-copy                  = $black
+$link-colour                = $dark-blue
+
+// Alerts
+$primary-colour             = $green
+$secondary-colour           = $dark-blue
+$warning-colour             = $yellow
+$info-colour                = $dark-blue
+$danger-colour              = $red
+$success-colour             = $green
+
+// Social Media
+$facebook                   = #4c66a4 !default
+$google-plus                = #dd4b39 !default
+$pinterest                  = #cb2027 !default
+$twitter                    = #2fc2ef !default
+$tumblr                     = #35465c !default
