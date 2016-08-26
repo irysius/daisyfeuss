@@ -89,13 +89,13 @@ gulp.task('clean', del.bind(null, [
 
 // Pages
 gulp.task(tasks.pages, () => {
-  return gulp.src(paths.pages.src)
+  gulp.src(paths.pages.src)
     .pipe(gulp.dest(basePaths.temp)) // exports .html
 });
 
 // Styles
 gulp.task(tasks.styles, () => {
-  return gulp.src(paths.styles.s)
+  gulp.src(paths.styles.s)
     .pipe(sourcemaps.init())
     .pipe(stylus({ style: 'expanded' }))
     .pipe(autoprefixer({browsers: autoprefixerBrowsers}))
@@ -129,14 +129,14 @@ gulp.task('install', () =>
 
 // Copy bower_components over
 gulp.task(tasks.copy, () => {
-  return gulp.src(paths.bower.src)
+  gulp.src(paths.bower.src)
     .pipe(gulp.dest(paths.bower.temp))
 });
 
 // Deploy to github pages
 // TODO: Create separate dist task from the temp task
 gulp.task('deploy', () => {
-  return gulp.src(basePaths.temp + wildCard)
+  gulp.src(basePaths.temp + wildCard)
     .pipe(ghPages())
 });
 

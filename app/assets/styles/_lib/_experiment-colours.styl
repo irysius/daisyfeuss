@@ -2,221 +2,322 @@
 //  :: Colours
 // ---------------------------------
 
-// Grey Palette
-$white                      = #ffffff
-$black                      = #2d2926
-
-$grey                       = lighten(black, 50%)
-$grey20                     ?= lighten(black, 80%)
-$grey40                     ?= lighten(black, 60%)
-$grey50                     ?= $grey
-$grey60                     ?= lighten(black, 40%)
-$grey80                     ?= lighten(black, 20%)
-
 // Primary Palette
 $dark-blue                  = #003da5
-$dark-blue20                ?= lighten($dark-blue, 40%)
-$dark-blue40                ?= lighten($dark-blue, 20%)
-$dark-blue50                ?= $dark-blue
-$dark-blue60                ?= darken($dark-blue, 20%)
-$dark-blue80                ?= darken($dark-blue, 40%)
 
-$teal                       = hsl(197, 81, 56) // #32b7ea
-$teal20                     ?= lighten($teal, 40%)
-$teal40                     ?= lighten($teal, 20%)
-$teal50                     ?= $teal
-$teal60                     ?= darken($teal, 20%)
-$teal80                     ?= darken($teal, 40%)
+$teal                       = #b9e0f1 // #32b7ea
+$teal                       = #cee9f5 // #32b7ea
+$teal20                     ?= lighten($teal, 60%)
+$teal40                     ?= $teal
+$teal50                     ?= darken($teal, 20%)
+$teal60                     ?= darken($teal, 40%)
+$teal80                     ?= darken($teal, 50%)
 
 // Secondary Palette
-$green                      = #94cf15
-$green20                    ?= lighten($green, 40%)
-$green40                    ?= lighten($green, 20%)
-$green50                    ?= $green
-$green60                    ?= darken($green, 20%)
-$green80                    ?= darken($green, 40%)
+$purple                     = #d5dff7
+$purple20                   ?= lighten($purple, 60%)
+$purple40                   ?= $purple
+$purple50                   ?= darken($purple, 20%)
+$purple60                   ?= darken($purple, 40%)
+$purple80                   ?= darken($purple, 50%)
 
-$orange                     = #ffa71a
-$orange20                   ?= lighten($orange, 40%)
-$orange40                   ?= lighten($orange, 20%)
-$orange50                   ?= $orange
-$orange60                   ?= darken($orange, 20%)
-$orange80                   ?= darken($orange, 40%)
+// $green                      = #c3f4d0
+$green                      = #d9f8e1
+$green20                    ?= lighten($green, 60%)
+$green40                    ?= $green
+$green50                    ?= darken($green, 20%)
+$green60                    ?= darken($green, 40%)
+$green80                    ?= darken($green, 50%)
 
-$red                        = #e50700
-$red20                      ?= lighten($red, 40%)
-$red40                      ?= lighten($red, 20%)
-$red50                      ?= $red
-$red60                      ?= darken($red, 20%)
-$red80                      ?= darken($red, 40%)
+$orange                     = #fedea4
+$orange                     = #fee7bd
+$orange20                   ?= lighten($orange, 60%)
+$orange40                   ?= $orange
+$orange50                   ?= darken($orange, 20%)
+$orange60                   ?= darken($orange, 40%)
+$orange80                   ?= darken($orange, 50%)
 
-$purple                     = #9600CC
-$purple20                   ?= lighten($purple, 40%)
-$purple40                   ?= lighten($purple, 20%)
-$purple50                   ?= $purple
-$purple60                   ?= darken($purple, 20%)
-$purple80                   ?= darken($purple, 40%)
+$red                        = #f5b6d0
+$red                        = #f8ccde
+$red20                      ?= lighten($red, 60%)
+$red40                      ?= $red
+$red50                      ?= darken($red, 20%)
+$red60                      ?= darken($red, 40%)
+$red80                      ?= darken($red, 50%)
 
-$gold                       = #FFD000
-$gold20                     ?= lighten($gold, 40%)
-$gold40                     ?= lighten($gold, 20%)
-$gold50                     ?= $gold
-$gold60                     ?= darken($gold, 20%)
-$gold80                     ?= darken($gold, 40%)
+$gold                       = #fdf0a7
+$gold                       = #fef4c0
+$gold20                     ?= lighten($gold, 60%)
+$gold40                     ?= $gold
+$gold50                     ?= darken($gold, 20%)
+$gold60                     ?= darken($gold, 40%)
+$gold80                     ?= darken($gold, 50%)
 
+// Grey Palette
+$white                      = #ffffff
+
+$grey                       = saturation($teal, 10%)
+$grey10                     ?= lighten($grey, 80%)
+$grey20                     ?= lighten($grey, 60%)
+$grey40                     ?= lighten($grey, 20%)
+$grey50                     ?= $grey
+$grey60                     ?= darken($grey, 20%)
+$grey80                     ?= darken($grey, 60%)
+$grey90                     ?= darken($grey, 80%)
 
 .colour-strip
   display: inline-block
 
 .colour-test
-  height: 50px
+  height: 3rem
   list-style: none
   padding: 0
-  width: 150px
+  position: relative /* for colour label */
+  width: 9rem
+
+  &:before
+    color: $grey90
+    position: absolute
+    font-weight: 600
+    text-transform: uppercase
+    bottom: .5rem
+    left: .5rem
 
   &--grey
     background-color: $grey
+    &:before
+      content: "'%s'" % $grey
+
+    &10
+      background-color: $grey10
+      &:before
+        content: "'%s'" % $grey10
 
     &20
       background-color: $grey20
+      &:before
+        content: "'%s'" % $grey20
 
     &40
       background-color: $grey40
+      &:before
+        content: "'%s'" % $grey40
 
     &50
       background-color: $grey50
+      &:before
+        content: "'%s'" % $grey50
 
     &60
       background-color: $grey60
+      &:before
+        content: "'%s'" % $grey60
 
     &80
       background-color: $grey80
+      &:before
+        content: "'%s'" % $grey80
+        color: $white
+
+    &90
+      background-color: $grey90
+      &:before
+        content: "'%s'" % $grey90
+        color: $white
 
   &--dark-blue
     background-color: $dark-blue
-
-    &20
-      background-color: $dark-blue20
-
-    &40
-      background-color: $dark-blue40
-
-    &50
-      background-color: $dark-blue50
-
-    &60
-      background-color: $dark-blue60
-
-    &80
-      background-color: $dark-blue80
+    &:before
+      content: "'%s'" % $dark-blue
+      color: $white
 
   &--teal
     background-color: $teal
+    &:before
+      content: "'%s'" % $teal
 
     &20
       background-color: $teal20
+      &:before
+        content: "'%s'" % $teal20
 
     &40
       background-color: $teal40
+      &:before
+        content: "'%s'" % $teal40
 
     &50
       background-color: $teal50
+      &:before
+        content: "'%s'" % $teal50
 
     &60
       background-color: $teal60
+      &:before
+        content: "'%s'" % $teal60
+        color: $white
 
     &80
       background-color: $teal80
+      &:before
+        content: "'%s'" % $teal80
+        color: $white
 
   &--green
     background-color: $green
+    &:before
+      content: "'%s'" % $green
 
     &20
       background-color: $green20
+      &:before
+        content: "'%s'" % $green20
 
     &40
       background-color: $green40
+      &:before
+        content: "'%s'" % $green40
 
     &50
       background-color: $green50
+      &:before
+        content: "'%s'" % $green50
 
     &60
       background-color: $green60
+      &:before
+        content: "'%s'" % $green60
 
     &80
       background-color: $green80
+      &:before
+        content: "'%s'" % $green80
+        color: $white
 
   &--orange
     background-color: $orange
+    &:before
+      content: "'%s'" % $orange
 
     &20
       background-color: $orange20
+      &:before
+        content: "'%s'" % $orange20
 
     &40
       background-color: $orange40
+      &:before
+        content: "'%s'" % $orange40
 
     &50
       background-color: $orange50
+      &:before
+        content: "'%s'" % $orange50
 
     &60
       background-color: $orange60
+      &:before
+        content: "'%s'" % $orange60
 
     &80
       background-color: $orange80
+      &:before
+        content: "'%s'" % $orange80
+        color: $white
 
   &--red
     background-color: $red
+    &:before
+      content: "'%s'" % $red
 
     &20
       background-color: $red20
+      &:before
+        content: "'%s'" % $red20
 
     &40
       background-color: $red40
+      &:before
+        content: "'%s'" % $red40
 
     &50
       background-color: $red50
+      &:before
+        content: "'%s'" % $red50
 
     &60
       background-color: $red60
+      &:before
+        content: "'%s'" % $red60
+        color: $white
 
     &80
       background-color: $red80
+      &:before
+        content: "'%s'" % $red80
+        color: $white
 
   &--purple
     background-color: $purple
+    &:before
+      content: "'%s'" % $purple
 
     &20
       background-color: $purple20
+      &:before
+        content: "'%s'" % $purple20
 
     &40
       background-color: $purple40
+      &:before
+        content: "'%s'" % $purple40
 
     &50
       background-color: $purple50
+      &:before
+        content: "'%s'" % $purple50
 
     &60
       background-color: $purple60
+      &:before
+        content: "'%s'" % $purple60
+        color: $white
 
     &80
       background-color: $purple80
+      &:before
+        content: "'%s'" % $purple80
+        color: $white
 
   &--gold
     background-color: $gold
+    &:before
+      content: "'%s'" % $gold
 
     &20
       background-color: $gold20
+      &:before
+        content: "'%s'" % $gold20
 
     &40
       background-color: $gold40
+      &:before
+        content: "'%s'" % $gold40
 
     &50
       background-color: $gold50
+      &:before
+        content: "'%s'" % $gold50
 
     &60
       background-color: $gold60
+      &:before
+        content: "'%s'" % $gold60
 
     &80
       background-color: $gold80
+      &:before
+        content: "'%s'" % $gold80
 
 // ---------------------------------
 //  :: Colour Themes
@@ -226,17 +327,16 @@ $gold80                     ?= darken($gold, 40%)
 $body-copy                  = $black
 $link-colour                = $dark-blue
 
-// Alerts
+// Buttons
 $primary-colour             = $green
 $secondary-colour           = $dark-blue
+
+// Alerts
 $warning-colour             = $yellow
 $info-colour                = $dark-blue
 $danger-colour              = $red
 $success-colour             = $green
 
 // Social Media
-$facebook                   = #4c66a4 !default
-$google-plus                = #dd4b39 !default
-$pinterest                  = #cb2027 !default
-$twitter                    = #2fc2ef !default
-$tumblr                     = #35465c !default
+$facebook                   = #3b5998
+$twitter                    = #1da1f2
