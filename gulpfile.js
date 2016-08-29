@@ -21,7 +21,7 @@ const
   runSequence     = require('run-sequence'),
   sourcemaps      = require('gulp-sourcemaps'),
   stylus          = require('gulp-stylus'),
-  util           = require('gulp-util');
+  util            = require('gulp-util');
 
 // ---------------------------------
 // :: Variables
@@ -74,6 +74,7 @@ var tasks = {
   scripts:      'scripts',
   images:       'images',
   fonts:        'fonts',
+  clean:        'clean',
   copy:         'copy',
 };
 
@@ -94,7 +95,7 @@ var autoprefixerBrowsers = [
 // ---------------------------------
 
 // Clean dist directory
-gulp.task('clean', del.bind(null, [
+gulp.task(tasks.clean, del.bind(null, [
   basePaths.temp
 ], {dot: true}));
 
@@ -131,6 +132,7 @@ gulp.task(tasks.images, () =>
 );
 
 // Install bower components and npm packages using gulp
+// TODO: Deprecate this. It seems to not do what I want it to
 gulp.task('install', () =>
   gulp.src(['./bower.json', './package.json'])
     .pipe(install({allowRoot: true}))
@@ -163,5 +165,5 @@ gulp.task('serve', [tasks.styles], () => {
 
 // Default task
 gulp.task('default', callback => {
-  runSequence('clean', tasks.styles, [tasks.pages, tasks.images, tasks.copy], callback);
+  runSequence(tasks.clean, tasks.styles, [tasks.pages, tasks.images, tasks.copy], callback);
 });
