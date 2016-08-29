@@ -20,4 +20,4 @@ A playground (currently) for front end experiments
 
 ### Getting dependency updates
 1. Ensure you have the latest code
-2. Run `$ gulp install` to download your updates
+2. Run `$ npm install && bower install` to download your updates
