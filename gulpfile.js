@@ -146,7 +146,7 @@ gulp.task(tasks.copy, () => {
   gulp.src(paths.bower.src)
     // .pipe(uglify())
     // .pipe(concat('vendors.js'))
-    .pipe(config.production ? gulp.dest(paths.bower.dist) : gulp.dest(paths.bower.temp)) // exports file to appropriate folder
+    .pipe(config.production ? utils.noop() : gulp.dest(paths.bower.temp)) // if --production don't use bower_components
 });
 
 // Watch files for changes & reload
