@@ -20,20 +20,26 @@ const
   rename          = require('gulp-rename'),
   runSequence     = require('run-sequence'),
   sourcemaps      = require('gulp-sourcemaps'),
-  stylus          = require('gulp-stylus');
+  stylus          = require('gulp-stylus'),
+  util           = require('gulp-util');
 
 // ---------------------------------
 // :: Variables
 // ---------------------------------
 
+// import globalConfig from 'config';
 // const taskOptions = globalConfig.getConfigKeys();
+
+var config = {
+  production:   !!util.env.production // sets a util.env.production to be false normally so that by default it will do X instead of what it does for --production
+};
 
 var wildCard = '**/*';
 
 var basePaths = {
   src:          'app/',
   temp:         '_temp/',
-  dist:         '_dist/',
+  dist:         'docs/',
   bower:        'bower_components/',
 };
 
@@ -41,19 +47,23 @@ var paths = {
   pages: {
     src:        basePaths.src + 'views/' + '*',
     temp:       basePaths.temp,
+    dist:       basePaths.dist,
   },
   styles: {
     src:        basePaths.src + 'assets/styles/' + wildCard,
     temp:       basePaths.temp,
+    dist:       basePaths.dist,
     s:          basePaths.src + 'assets/styles/styles.styl',
   },
   images: {
     src:        basePaths.src + 'assets/images/' + wildCard,
     temp:       basePaths.temp + 'img/',
+    dist:       basePaths.dist,
   },
   bower: {
     src:        basePaths.bower + wildCard,
     temp:       basePaths.temp,
+    dist:       basePaths.dist,
   },
   // extras:       ['assets/favicons/**/*', 'assets/checkout/**/*'],
 };
@@ -94,23 +104,19 @@ gulp.task(tasks.pages, () => {
     .pipe(nunjucksRender({
       path: [basePaths.src + 'views/templates']
     }))
-    .pipe(gulp.dest(paths.pages.temp))
+    .pipe(config.production ? gulp.dest(paths.pages.dist) : gulp.dest(paths.pages.temp)) // exports file to appropriate folder
 });
 
 // Styles
 gulp.task(tasks.styles, () => {
   gulp.src(paths.styles.s)
-    .pipe(sourcemaps.init())
+    .pipe(config.production ? util.noop() : sourcemaps.init()) // if --production don't use sourcemaps
     .pipe(stylus({ style: 'expanded' }))
     .pipe(autoprefixer({browsers: autoprefixerBrowsers}))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest(paths.styles.temp)) // exports *.css
-    .pipe(cleanCSS({debug: true}, function(details) {
-      console.log('Uncompressed   (.css): ' + details.stats.originalSize + ' bytes');
-      console.log('Compressed (.min.css): ' + details.stats.minifiedSize + ' bytes');
-    }))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest(paths.styles.temp)) // exports *.min.css
+    .pipe(config.production ? util.noop() : sourcemaps.write()) // if --production don't use sourcemaps
+    .pipe(config.production ? cleanCSS() : util.noop()) // if --production minimize
+    .pipe(config.production ? rename({suffix: '.min'}) : util.noop()) // if --production rename
+    .pipe(config.production ? gulp.dest(paths.styles.dist) : gulp.dest(paths.styles.temp)) // exports file to appropriate folder
     .pipe(reload({stream: true}))
     .pipe(notify({ message: 'Styles update complete' }))
 });
@@ -119,8 +125,8 @@ gulp.task(tasks.styles, () => {
 gulp.task(tasks.images, () =>
   gulp.src(paths.images.src)
     .pipe(newer(paths.images.temp))
-    .pipe(imagemin())
-    .pipe(gulp.dest(paths.images.temp))
+    .pipe(config.production ? imagemin() : util.noop()) // if --production minify image
+    .pipe(config.production ? gulp.dest(paths.images.dist) : gulp.dest(paths.images.temp)) // exports file to appropriate folder
     .pipe(notify({ message: 'Images task complete' }))
 );
 
@@ -131,17 +137,10 @@ gulp.task('install', () =>
     .pipe(notify({ message: 'Update complete' }))
 );
 
-// Copy bower_components over
+// Copy bower_components to folder
 gulp.task(tasks.copy, () => {
   gulp.src(paths.bower.src)
-    .pipe(gulp.dest(paths.bower.temp))
-});
-
-// Deploy to github pages
-// TODO: Create separate dist task from the temp task
-gulp.task('deploy', () => {
-  gulp.src(basePaths.temp + wildCard)
-    .pipe(ghPages())
+    .pipe(config.production ? gulp.dest(paths.bower.dist) : gulp.dest(paths.bower.temp)) // exports file to appropriate folder
 });
 
 // Watch files for changes & reload
