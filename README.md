@@ -16,7 +16,7 @@ A playground (currently) for front end experiments
 
 ### Getting your environment started/running
 1. Run `$ gulp` to build the project
-2. Want to work on the project in the browser? Run `gulp serve` afterwards
+2. Want to work on the project in the browser? Run `$ gulp serve` afterwards
 3. Continue being awesome
 
 ### Getting dependency updates
