@@ -39,7 +39,7 @@ var basePaths = {
 
 var paths = {
   pages: {
-    src:        basePaths.src + 'views/' + wildCard,
+    src:        basePaths.src + 'views/' + '*',
     temp:       basePaths.temp,
   },
   styles: {
@@ -93,7 +93,7 @@ gulp.task(tasks.pages, () => {
   gulp.src(paths.pages.src) // finds files in views folder
     .pipe(nunjucksRender({
       path: [basePaths.src + 'views/templates']
-    })) // renders pages against the template
+    }))
     .pipe(gulp.dest(paths.pages.temp))
 });
 
