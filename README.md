@@ -4,7 +4,7 @@ A playground (currently) for front end experiments
 ### New here?
 
 #### Are you a novice?
-[Follow the instructions here](../../wiki/New-to-Development%3F) under **New to Development?** rather than the instructions below
+[Follow the instructions here](../../wiki/How-to-Use)
 
 #### Do you have development experience?
 1. Ensure you have [NodeJS](https://nodejs.org/en/) & [Git](https://git-scm.com/downloads) installed
@@ -19,5 +19,5 @@ A playground (currently) for front end experiments
 3. Continue being awesome
 
 ### Getting dependency updates
-1. Ensure you have the latest code.
+1. Ensure you have the latest code. [Don't know how?](../../wiki/How-to-Update)
 2. Run `$ npm install && bower install` to download your updates
