@@ -1,10 +1,11 @@
 # Daisy Feuss
 A playground (currently) for front end experiments
 
-### New here?
+### Getting Started
 
 #### Are you a novice?
-[Follow the instructions here](../../wiki/How-to-Use)
+[Follow the instructions here](../../wiki/How-to-Use) to get started using this project
+[Once setup, refer to these instructions](../../wiki/How-to-Update) to ensure your project stays up-to-date
 
 #### Do you have development experience?
 1. Ensure you have [NodeJS](https://nodejs.org/en/) & [Git](https://git-scm.com/downloads) installed
@@ -19,5 +20,5 @@ A playground (currently) for front end experiments
 3. Continue being awesome
 
 ### Getting dependency updates
-1. Ensure you have the latest code. [Don't know how?](../../wiki/How-to-Update)
+1. Ensure you have the latest code.
 2. Run `$ npm install && bower install` to download your updates
