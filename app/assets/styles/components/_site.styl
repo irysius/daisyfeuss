@@ -2,7 +2,13 @@
 // :: Site TEMP PARTIAL
 // ---------------------------------
 
+html, body
+  height: 100%
+
 .site-main
+  background-color: $grey10
+  height: auto !important
+  min-height: 100%
   margin-left: 15rem
 
 .site-sidebar
@@ -21,3 +27,11 @@
 
   &:hover
     background: whitesmoke
+
+.site-masthead
+  background-color: $teal50
+  color: $white
+  padding: 2rem
+
+  &__title
+    font-weight: 600
