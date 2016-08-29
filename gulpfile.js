@@ -8,6 +8,7 @@ const
   browserSync     = require('browser-sync'),
   bower           = require('gulp-bower'),
   cleanCSS        = require('gulp-clean-css'),
+  concat          = require('gulp-concat'),
   del             = require('del'),
   ghPages         = require('gulp-gh-pages'),
   gulpif          = require('gulp-if'),
@@ -21,7 +22,8 @@ const
   runSequence     = require('run-sequence'),
   sourcemaps      = require('gulp-sourcemaps'),
   stylus          = require('gulp-stylus'),
-  util            = require('gulp-util');
+  uglify          = require('gulp-uglify'),
+  utils           = require('gulp-util');
 
 // ---------------------------------
 // :: Variables
@@ -31,7 +33,7 @@ const
 // const taskOptions = globalConfig.getConfigKeys();
 
 var config = {
-  production:   !!util.env.production // sets a util.env.production to be false normally so that by default it will do X instead of what it does for --production
+  production:   !!utils.env.production // sets a utils.env.production to be false normally so that by default it will do X instead of what it does for --production
 };
 
 var wildCard = '**/*';
@@ -111,12 +113,12 @@ gulp.task(tasks.pages, () => {
 // Styles
 gulp.task(tasks.styles, () => {
   gulp.src(paths.styles.s)
-    .pipe(config.production ? util.noop() : sourcemaps.init()) // if --production don't use sourcemaps
+    .pipe(config.production ? utils.noop() : sourcemaps.init()) // if --production don't use sourcemaps
     .pipe(stylus({ style: 'expanded' }))
     .pipe(autoprefixer({browsers: autoprefixerBrowsers}))
-    .pipe(config.production ? util.noop() : sourcemaps.write()) // if --production don't use sourcemaps
-    .pipe(config.production ? cleanCSS() : util.noop()) // if --production minimize
-    .pipe(config.production ? rename({suffix: '.min'}) : util.noop()) // if --production rename
+    .pipe(config.production ? utils.noop() : sourcemaps.write()) // if --production don't use sourcemaps
+    .pipe(config.production ? cleanCSS() : utils.noop()) // if --production minimize
+    .pipe(config.production ? rename({suffix: '.min'}) : utils.noop()) // if --production rename
     .pipe(config.production ? gulp.dest(paths.styles.dist) : gulp.dest(paths.styles.temp)) // exports file to appropriate folder
     .pipe(reload({stream: true}))
     .pipe(notify({ message: 'Styles update complete' }))
@@ -126,7 +128,7 @@ gulp.task(tasks.styles, () => {
 gulp.task(tasks.images, () =>
   gulp.src(paths.images.src)
     .pipe(newer(paths.images.temp))
-    .pipe(config.production ? imagemin() : util.noop()) // if --production minify image
+    .pipe(config.production ? imagemin() : utils.noop()) // if --production minify image
     .pipe(config.production ? gulp.dest(paths.images.dist) : gulp.dest(paths.images.temp)) // exports file to appropriate folder
     .pipe(notify({ message: 'Images task complete' }))
 );
@@ -142,6 +144,8 @@ gulp.task('install', () =>
 // Copy bower_components to folder
 gulp.task(tasks.copy, () => {
   gulp.src(paths.bower.src)
+    // .pipe(uglify())
+    // .pipe(concat('vendors.js'))
     .pipe(config.production ? gulp.dest(paths.bower.dist) : gulp.dest(paths.bower.temp)) // exports file to appropriate folder
 });
 
