@@ -83,7 +83,12 @@
 <script>dojoConfig = {async: true}</script>
 <script src="./dojo/dojo.js" data-dojo-config="async: true"></script>
 <!-- FOR ONLINE -->
-<script data-dojo-config="async: 1" src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
+<script data-dojo-config="async: 1, dojoBlankHtmlUrl: './dojo/resources/blank.html',
+        packages: [ {
+            name: 'custom',
+            location: location.pathname.replace(/\/[^/]+$/, '') + '/js/custom'
+        } ]"
+    src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
 
 <script>
 	require([ 'dgrid/Grid', 'dojo/domReady!' ], function (Grid) {
