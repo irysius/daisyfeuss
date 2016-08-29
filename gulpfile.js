@@ -3,23 +3,24 @@
 // ---------------------------------
 
 const
-  gulp          = require('gulp'),
-  autoprefixer  = require('gulp-autoprefixer'),
-  browserSync   = require('browser-sync'),
-  bower         = require('gulp-bower'),
-  cleanCSS      = require('gulp-clean-css'),
-  del           = require('del'),
-  ghPages       = require('gulp-gh-pages'),
-  gulpif        = require('gulp-if'),
-  imagemin      = require('gulp-imagemin'),
-  install       = require('gulp-install'),
-  newer         = require('gulp-newer'),
-  notify        = require('gulp-notify'),
-  reload        = browserSync.reload,
-  rename        = require('gulp-rename'),
-  runSequence   = require('run-sequence'),
-  sourcemaps    = require('gulp-sourcemaps'),
-  stylus        = require('gulp-stylus');
+  gulp            = require('gulp'),
+  autoprefixer    = require('gulp-autoprefixer'),
+  browserSync     = require('browser-sync'),
+  bower           = require('gulp-bower'),
+  cleanCSS        = require('gulp-clean-css'),
+  del             = require('del'),
+  ghPages         = require('gulp-gh-pages'),
+  gulpif          = require('gulp-if'),
+  imagemin        = require('gulp-imagemin'),
+  install         = require('gulp-install'),
+  newer           = require('gulp-newer'),
+  notify          = require('gulp-notify'),
+  nunjucksRender  = require('gulp-nunjucks-render'),
+  reload          = browserSync.reload,
+  rename          = require('gulp-rename'),
+  runSequence     = require('run-sequence'),
+  sourcemaps      = require('gulp-sourcemaps'),
+  stylus          = require('gulp-stylus');
 
 // ---------------------------------
 // :: Variables
@@ -89,8 +90,11 @@ gulp.task('clean', del.bind(null, [
 
 // Pages
 gulp.task(tasks.pages, () => {
-  gulp.src(paths.pages.src)
-    .pipe(gulp.dest(basePaths.temp)) // exports .html
+  gulp.src(paths.pages.src) // finds files in views folder
+    .pipe(nunjucksRender({
+      path: [basePaths.src + 'views/templates']
+    })) // renders pages against the template
+    .pipe(gulp.dest(paths.pages.temp))
 });
 
 // Styles
