@@ -10,7 +10,7 @@ A playground (currently) for front end experiments
 #### Do you have development experience?
 1. Ensure you have [NodeJS](https://nodejs.org/en/) & [Git](https://git-scm.com/downloads) installed
 2. Clone `daisyfeuss`
-3. Navigate to the directory & run `$ npm install --global gulp && npm install && gulp install`
+3. Navigate to the directory & run `$ npm install --global gulp && npm install && bower install`
 
 ---
 
