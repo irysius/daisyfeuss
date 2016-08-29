@@ -19,19 +19,30 @@ html, body
   top: 0
   width: 15rem
 
-.site-nav__link
-  display: block
-  font-size: .875rem
-  padding: 1rem 1rem 1rem 2rem
-  width: 100%
+.site-nav
+  &__title
+    padding: 1rem 1rem 1rem 2rem
 
-  &:hover
-    background: whitesmoke
+  &__link
+    display: block
+    font-size: .875rem
+    padding: 1rem 1rem 1rem 2rem
+    width: 100%
+
+    &:hover
+      background: whitesmoke
 
 .site-masthead
   background-color: $teal50
   color: $white
-  padding: 2rem
+  padding: 3rem
 
   &__title
     font-weight: 600
+
+.site-card
+  background-color: $white
+  border-radius: 3px
+  box-shadow: 0 1px 2px rgba(black, .15)
+  margin: 1rem
+  padding: 2rem
