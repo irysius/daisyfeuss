@@ -4,8 +4,8 @@ A playground (currently) for front end experiments
 ### Getting Started
 
 #### Are you a novice?
-[Follow the instructions here](../../wiki/How-to-Use) to get started using this project
-[Once setup, refer to these instructions](../../wiki/How-to-Update) to ensure your project stays up-to-date
+- [Follow the instructions here](../../wiki/How-to-Use) to get started using this project
+- [Once setup, refer to these instructions](../../wiki/How-to-Update) to ensure your project stays up-to-date
 
 #### Do you have development experience?
 1. Ensure you have [NodeJS](https://nodejs.org/en/) & [Git](https://git-scm.com/downloads) installed
