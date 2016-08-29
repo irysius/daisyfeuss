@@ -20,5 +20,5 @@ A playground (currently) for front end experiments
 3. Continue being awesome
 
 ### Getting dependency updates
-1. Ensure you have the latest code.
-2. Run `$ npm install && bower install` to download your updates
+1. Ensure you have pulled the latest code into your local project
+2. Run `$ npm install && bower install` to download your dependencies and updates
