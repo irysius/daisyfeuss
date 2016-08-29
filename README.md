@@ -4,7 +4,7 @@ A playground (currently) for front end experiments
 ### New here?
 
 #### Are you a novice?
-[Follow the instructions here](docs/how-to-use.md)
+[Follow the instructions here](URL_to_wiki/how-to-use.md)
 
 #### Do you have development experience?
 1. Ensure you have [NodeJS](https://nodejs.org/en/) & [Git](https://git-scm.com/downloads) installed
