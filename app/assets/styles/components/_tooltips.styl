@@ -16,14 +16,13 @@
 .dijitTooltipBelow
   padding-top: 1rem
 
-
   &:before
     content: ""
     width: 0
     height: 0
     border-style: solid
     border-width: 0 9px 9px 9px
-    border-color: transparent transparent #a2aaad transparent
+    border-color: transparent transparent $grey60 transparent
     position: absolute
     left: 5px
     /* 6px */
@@ -45,11 +44,11 @@
 
 .dijitTooltipContainer
   background-color: $white
-  border: 1px solid $grey
+  border: 1px solid $grey60
   padding: 6px 8px
   font-size: 0.75rem /* 12px */
   border-radius: $border-radius
-  box-shadow: 0 1px 6px rgba($black, .25)
+  box-shadow: 0 1px 6px rgba($grey90, .25)
   color: $black
   transition-delay: .2s
   transition-duration: 0.4s

@@ -65,8 +65,10 @@ $grey60                     ?= darken($grey, 20%)
 $grey80                     ?= darken($grey, 60%)
 $grey90                     ?= darken($grey, 80%)
 
-.colour-strip
+.colour-palette
   display: inline-block
+
+.colour-strip
   padding: 0
 
 .colour-test
@@ -83,6 +85,14 @@ $grey90                     ?= darken($grey, 80%)
     text-transform: uppercase
     bottom: .5rem
     left: .5rem
+
+  &:first-child
+    border-top-left-radius: $border-radius
+    border-top-right-radius: $border-radius
+
+  &:last-child
+    border-bottom-left-radius: $border-radius
+    border-bottom-right-radius: $border-radius
 
   &--grey
     background-color: $grey50
