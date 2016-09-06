@@ -9,38 +9,30 @@ body
   -webkit-font-smoothing: antialiased
   -webkit-text-size-adjust: none
   color: $text-colour
-  font-family: $sans-serif
+  font-family: $text-font
 
-h1 small, h2 small, h3 small, h4 small, h5 small, h6 small
-  font-size: 60%
-  line-height: 0
-  text-transform: none
+h1, h2, h3, h4, h5, h6
+  letter-spacing: -0.025em
+  line-height: 1.25
 
 h1, .h1
-  font-weight: $light
   font-size: $h1-font-size
-  font-size: 2.25rem
-h2, .h2
   font-weight: $light
+h2, .h2
   font-size: $h2-font-size
-  font-size: 1.5rem
+  font-weight: $light
 h3, .h3
-  font-weight: $normal
   font-size: $h3-font-size
-  font-size: 1.125rem
+  font-weight: $normal
 h4, .h4
-  font-weight: $normal
   font-size: $h4-font-size
-  font-size: .875rem
-h5, .h5
   font-weight: $normal
+h5, .h5
   font-size: $h5-font-size
-  font-size: $h5-font-size
+  font-weight: $normal
 h6, .h6
-  font-weight: $bold
   font-size: $h6-font-size
-  text-transform: uppercase
-  color: #444
+  font-weight: $bold
 
 a
   color: $link-colour
@@ -50,5 +42,5 @@ b, strong
   font-weight: $strong-font-weight
 
 p
+  font-size: $p-font-size
   line-height: 1.6
-  font-size: .75rem
