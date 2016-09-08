@@ -3,52 +3,45 @@
 // ---------------------------------
 
 // Font Size Converter
-set-font-size(value) {
+set-font-size(value)
     font-size: value
 
-    if (value is inherit) {
+    if (value is inherit)
         /* do nothing, "inherit" has no unit */
-    }
-    else if (value is $h1) {
-        font-size: remify($h1-font-size)
+    else if (value is $h1)
+        font-size: remify(value)
         font-weight: $light
         letter-spacing: -0.025em
         line-height: 1.25
-    }
-    else if (value is $h2) {
-        font-size: remify($h2-font-size)
-        font-weight: $light
-    }
-    else if (value is $h3) {
-        font-size: remify($h3-font-size)
-        font-weight: $normal
-    }
-    else if (value is $h4) {
-        font-size: remify($h4-font-size)
-        font-weight: $normal
-    }
-    else if (value is $h5) {
-        font-size: remify($h5-font-size)
-        font-weight: $normal
-    }
-    else if (value is $h6) {
-        font-size: remify($h4-font-size)
-        font-weight: $bold
-    } else {
+    else if (value is $h2)
         font-size: remify(value)
-    }
-}
+        font-weight: $light
+    else if (value is $h3)
+        font-size: remify(value)
+        font-weight: $normal
+    else if (value is $h4)
+        font-size: remify(value)
+        font-weight: $normal
+    else if (value is $h5)
+        font-size: remify(value)
+        font-weight: $normal
+    else if (value is $h6)
+        font-size: remify(value)
+        font-weight: $bold
+    else if (value is $p)
+        font-size: remify(value)
+        line-height: 1.6
+    else
+        font-size: remify(value)
 
 // Rem Converter
-remify(value) {
+remify(value)
     u = unit(value)
 
-    if (u is 'px') {
+    if (u is 'px')
         return unit(value/16, 'rem')
-    } else {
+    else
         return unit(value, u)
-    }
-}
 
 // TODO: BUILD A Z-INDEX GENERATOR FOR CONSISTENT Z-INDEX
 // https://www.smashingmagazine.com/2014/06/sassy-z-index-management-for-complex-layouts/
