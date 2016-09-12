@@ -11,36 +11,53 @@
   top: -10000px
   overflow: visible
 
-// Tooltip Arrow
+  /* common styles for tooltip arrow */
+  &:before, &:after
+    border-style: solid
+    content: ""
+    width: 0
+    height: 0
+    position: absolute
+
+// Tooltip Arrow - Above
+
+.dijitTooltipAbove
+  padding-bottom: 1rem
+
+  &:before
+    border-width: 9px 9px 0 9px
+    border-color: $grey60 transparent transparent transparent
+    bottom: 8px
+
+  &:after
+    border-width: 9px 9px 0 9px
+    border-color: $white transparent transparent transparent
+    bottom: 9px
+
+.dijitTooltipABLeft
+  &:before
+    left: 6px
+  &:after
+    left: 7px
+
+.dijitTooltipABRight
+  &:before
+    right: 5px
+  &:after
+    right: 6px
 
 .dijitTooltipBelow
   padding-top: 1rem
 
   &:before
-    content: ""
-    width: 0
-    height: 0
-    border-style: solid
     border-width: 0 9px 9px 9px
     border-color: transparent transparent $grey60 transparent
-    position: absolute
-    left: 5px
-    /* 6px */
     top: 8px
-    /* 8px */
 
   &:after
-    content: ""
-    width: 0
-    height: 0
-    border-style: solid
     border-width: 0 8px 8px 8px
-    border-color: transparent transparent #fff transparent
-    position: absolute
-    left: 0.375rem
-    /* 6px */
+    border-color: transparent transparent $white transparent
     top: 9px
-    /* 8px */
 
 .dijitTooltipContainer
   background-color: $white
