@@ -10,8 +10,13 @@
 </div>
 
 <div class="site-card">
-  <div id="chartOne" style="width: 100%; height: 240px;"></div>
-  <div id="legendOne"></div>
+  <div id="chartPie" style="width: 30em; height: 240px;"></div>
+</div>
+<div class="site-card">
+  <div id="chartLine" style="width: 30em; height: 240px;"></div>
+</div>
+<div class="site-card">
+  <div id="chartBar" style="width: 30em; height: 240px;"></div>
 </div>
 
 <!-- FOR LOCAL -->
@@ -26,30 +31,63 @@
     src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
 
 <script>
+  // Pie Chart
   require(["dojox/charting/Chart", "dojox/charting/plot2d/Pie", "dojox/charting/action2d/Highlight",
            "dojox/charting/action2d/MoveSlice" , "dojox/charting/action2d/Tooltip",
            "dojox/charting/themes/MiamiNice", "dojox/charting/widget/Legend", "dojo/ready"],
     function(Chart, Pie, Highlight, MoveSlice, Tooltip, MiamiNice, Legend, ready){
     ready(function(){
-      var chartOne = new Chart("chartOne");
-      chartOne.setTheme(MiamiNice)
+      var chartPie = new Chart("chartPie");
+      chartPie.setTheme(MiamiNice)
        .addPlot("default", {
           type: Pie,
-          font: "bold normal .75rem Arial",
+          font: "normal normal .75rem Arial",
           fontColor: "#292f32",
           labelOffset: -24,
+          labelStyle: "columns",
+          labelWiring: "#adb7bc",
           radius: 80
       }).addSeries("Series A", [
-          {y: 4, text: "Red",   stroke: "white", fill: "#88a4e8", tooltip: "<strong>Tooltip Stat</strong><br>20%"},
+          {y: 4, text: "Red",   stroke: "white", fill: "#88a4e8", tooltip: "20%"},
           {y: 2, text: "Green", stroke: "white", fill: "#83c7e6", tooltip: "<strong>Tooltip Stat</strong><br>25%"},
           {y: 1, text: "Blue",  stroke: "white", fill: "#8aeaa3", tooltip: "<strong>Tooltip Stat</strong><br>20%"},
           {y: 1, text: "Other", stroke: "white", fill: "#fde568", tooltip: "<strong>Tooltip Stat</strong><br>45%"}
       ]);
-      var anim_a = new MoveSlice(chartOne, "default");
-      var anim_b = new Highlight(chartOne, "default");
-      var anim_c = new Tooltip(chartOne, "default");
-      chartOne.render();
-      var legendOne = new Legend({chart: chartOne}, "legendOne");
+      var anim_a = new MoveSlice(chartPie, "default");
+      var anim_b = new Highlight(chartPie, "default");
+      var anim_c = new Tooltip(chartPie, "default");
+      chartPie.render();
+    });
+  });
+
+  // Line Chart
+  require(["dojox/charting/Chart", "dojox/charting/axis2d/Default", "dojox/charting/plot2d/Lines", "dojo/ready"],
+    function(Chart, Default, Lines, ready){
+    ready(function(){
+      var chartLine = new Chart("chartLine");
+      chartLine.addPlot("default", {type: Lines});
+      chartLine.addAxis("x");
+      chartLine.addAxis("y", {vertical: true});
+      chartLine.addSeries("Series 1", [1, 2, 2, 3, 4, 5, 5, 7]);
+      chartLine.render();
+    });
+  });
+
+  // Bar Chart
+  require(["dojox/charting/Chart", "dojox/charting/plot2d/Bars", "dojo/ready"],
+    function(Chart, Bars, ready){
+    ready(function(){
+      var chartBar = new Chart("chartBar");
+      chartBar.addPlot("default", {
+        type: Bars,
+        gap: 5,
+        minBarSize: 3,
+        maxBarSize: 20
+      });
+      chartBar.addAxis("x");
+      chartBar.addAxis("y", {vertical: true});
+      chartBar.addSeries("Series 1", [1, 2, 2, 3, 4, 5, 5, 7]);
+      chartBar.render();
     });
   });
 </script>
