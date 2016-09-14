@@ -67,24 +67,24 @@ $grey90                     ?= darken($grey, 80%)
 
 .colour-palette
   display: inline-block
-
-.colour-strip
+  overflow: hidden // to limit spread of box-shadow on colour-swatch--lead
   padding: 0
 
-.colour-test
+.colour-swatch
+  color: $grey90
+  font-weight: $bold
   height: 3rem
   list-style: none
   padding: 0
   position: relative /* for colour label */
-  width: 9rem
+  text-transform: uppercase
+  width: 12rem
 
   &:before
-    color: $grey90
+    bottom: .75rem
+    right: .75rem
+    letter-spacing: .025rem
     position: absolute
-    font-weight: 600
-    text-transform: uppercase
-    bottom: .5rem
-    left: .5rem
 
   &:first-child
     border-top-left-radius: $border-radius
@@ -93,6 +93,15 @@ $grey90                     ?= darken($grey, 80%)
   &:last-child
     border-bottom-left-radius: $border-radius
     border-bottom-right-radius: $border-radius
+
+  &--lead
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3)
+    height: 6rem // for the main swatch colour
+    position: relative // for box shadow
+    z-index: 1 // for box shadow
+
+  &--inverted
+    color: $white // inverts the text on a swatch
 
   &--grey
     background-color: $grey50
@@ -128,19 +137,16 @@ $grey90                     ?= darken($grey, 80%)
       background-color: $grey80
       &:before
         content: "'%s'" % $grey80
-        color: $white
 
     &90
       background-color: $grey90
       &:before
         content: "'%s'" % $grey90
-        color: $white
 
   &--dark-blue
     background-color: $dark-blue
     &:before
       content: "'%s'" % $dark-blue
-      color: $white
 
   &--teal
     background-color: $teal50
@@ -166,13 +172,11 @@ $grey90                     ?= darken($grey, 80%)
       background-color: $teal60
       &:before
         content: "'%s'" % $teal60
-        color: $white
 
     &80
       background-color: $teal80
       &:before
         content: "'%s'" % $teal80
-        color: $white
 
   &--green
     background-color: $green50
@@ -203,7 +207,6 @@ $grey90                     ?= darken($grey, 80%)
       background-color: $green80
       &:before
         content: "'%s'" % $green80
-        color: $white
 
   &--orange
     background-color: $orange50
@@ -234,7 +237,6 @@ $grey90                     ?= darken($grey, 80%)
       background-color: $orange80
       &:before
         content: "'%s'" % $orange80
-        color: $white
 
   &--red
     background-color: $red50
@@ -260,13 +262,11 @@ $grey90                     ?= darken($grey, 80%)
       background-color: $red60
       &:before
         content: "'%s'" % $red60
-        color: $white
 
     &80
       background-color: $red80
       &:before
         content: "'%s'" % $red80
-        color: $white
 
   &--purple
     background-color: $purple50
@@ -292,13 +292,11 @@ $grey90                     ?= darken($grey, 80%)
       background-color: $purple60
       &:before
         content: "'%s'" % $purple60
-        color: $white
 
     &80
       background-color: $purple80
       &:before
         content: "'%s'" % $purple80
-        color: $white
 
   &--gold
     background-color: $gold50
@@ -330,6 +328,18 @@ $grey90                     ?= darken($grey, 80%)
       &:before
         content: "'%s'" % $gold80
 
+.colour-swatch__label
+  position: absolute;
+
+  &--hue
+    font-size: .8125rem
+    left: .75rem
+    top: .75rem
+
+  &--saturation
+    bottom: .75rem
+    font-weight: $normal
+    left: .75rem
 // ---------------------------------
 //  :: Colour Themes
 // ---------------------------------
