@@ -28,11 +28,15 @@ html, body
     padding-right: 2rem
 
   &__title
-    font-size: .875rem
+    set-font-size($p)
+
+    color: $grey80
     font-weight: 600
+    letter-spacing: .0625rem
     margin-top: 1.5rem
     margin-bottom: .75rem
     padding: 0 2rem
+    text-transform: uppercase
 
   &__link
     display: block
@@ -57,3 +61,282 @@ html, body
   box-shadow: 0 1px 2px rgba(black, .15)
   margin: 1rem
   padding: 1.5rem 2.25rem
+
+
+// Colour Swatches
+
+.colour-palette
+  display: inline-block
+  overflow: hidden // to limit spread of box-shadow on colour-swatch--lead
+  padding: 0
+
+.colour-swatch
+  color: $grey90
+  font-weight: $bold
+  height: 3rem
+  list-style: none
+  padding: 0
+  position: relative /* for colour label */
+  text-transform: uppercase
+  width: 12rem
+
+  &:before
+    bottom: .75rem
+    right: .75rem
+    letter-spacing: .025rem
+    position: absolute
+
+  &:first-child
+    border-top-left-radius: $border-radius
+    border-top-right-radius: $border-radius
+
+  &:last-child
+    border-bottom-left-radius: $border-radius
+    border-bottom-right-radius: $border-radius
+
+  &--lead
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3)
+    height: 6rem // for the main swatch colour
+    position: relative // for box shadow
+    z-index: 1 // for box shadow
+
+  &--inverted
+    color: $white // inverts the text on a swatch
+
+  &--grey
+    background-color: $grey50
+    &:before
+      content: "'%s'" % $grey50
+
+    &10
+      background-color: $grey10
+      &:before
+        content: "'%s'" % $grey10
+
+    &20
+      background-color: $grey20
+      &:before
+        content: "'%s'" % $grey20
+
+    &40
+      background-color: $grey40
+      &:before
+        content: "'%s'" % $grey40
+
+    &50
+      background-color: $grey50
+      &:before
+        content: "'%s'" % $grey50
+
+    &60
+      background-color: $grey60
+      &:before
+        content: "'%s'" % $grey60
+
+    &80
+      background-color: $grey80
+      &:before
+        content: "'%s'" % $grey80
+
+    &90
+      background-color: $grey90
+      &:before
+        content: "'%s'" % $grey90
+
+  &--dark-blue
+    background-color: $dark-blue
+    &:before
+      content: "'%s'" % $dark-blue
+
+  &--teal
+    background-color: $teal50
+    &:before
+      content: "'%s'" % $teal50
+
+    &20
+      background-color: $teal20
+      &:before
+        content: "'%s'" % $teal20
+
+    &40
+      background-color: $teal40
+      &:before
+        content: "'%s'" % $teal40
+
+    &50
+      background-color: $teal50
+      &:before
+        content: "'%s'" % $teal50
+
+    &60
+      background-color: $teal60
+      &:before
+        content: "'%s'" % $teal60
+
+    &80
+      background-color: $teal80
+      &:before
+        content: "'%s'" % $teal80
+
+  &--green
+    background-color: $green50
+    &:before
+      content: "'%s'" % $green50
+
+    &20
+      background-color: $green20
+      &:before
+        content: "'%s'" % $green20
+
+    &40
+      background-color: $green40
+      &:before
+        content: "'%s'" % $green40
+
+    &50
+      background-color: $green50
+      &:before
+        content: "'%s'" % $green50
+
+    &60
+      background-color: $green60
+      &:before
+        content: "'%s'" % $green60
+
+    &80
+      background-color: $green80
+      &:before
+        content: "'%s'" % $green80
+
+  &--orange
+    background-color: $orange50
+    &:before
+      content: "'%s'" % $orange50
+
+    &20
+      background-color: $orange20
+      &:before
+        content: "'%s'" % $orange20
+
+    &40
+      background-color: $orange40
+      &:before
+        content: "'%s'" % $orange40
+
+    &50
+      background-color: $orange50
+      &:before
+        content: "'%s'" % $orange50
+
+    &60
+      background-color: $orange60
+      &:before
+        content: "'%s'" % $orange60
+
+    &80
+      background-color: $orange80
+      &:before
+        content: "'%s'" % $orange80
+
+  &--red
+    background-color: $red50
+    &:before
+      content: "'%s'" % $red50
+
+    &20
+      background-color: $red20
+      &:before
+        content: "'%s'" % $red20
+
+    &40
+      background-color: $red40
+      &:before
+        content: "'%s'" % $red40
+
+    &50
+      background-color: $red50
+      &:before
+        content: "'%s'" % $red50
+
+    &60
+      background-color: $red60
+      &:before
+        content: "'%s'" % $red60
+
+    &80
+      background-color: $red80
+      &:before
+        content: "'%s'" % $red80
+
+  &--purple
+    background-color: $purple50
+    &:before
+      content: "'%s'" % $purple50
+
+    &20
+      background-color: $purple20
+      &:before
+        content: "'%s'" % $purple20
+
+    &40
+      background-color: $purple40
+      &:before
+        content: "'%s'" % $purple40
+
+    &50
+      background-color: $purple50
+      &:before
+        content: "'%s'" % $purple50
+
+    &60
+      background-color: $purple60
+      &:before
+        content: "'%s'" % $purple60
+
+    &80
+      background-color: $purple80
+      &:before
+        content: "'%s'" % $purple80
+
+  &--gold
+    background-color: $gold50
+    &:before
+      content: "'%s'" % $gold50
+
+    &20
+      background-color: $gold20
+      &:before
+        content: "'%s'" % $gold20
+
+    &40
+      background-color: $gold40
+      &:before
+        content: "'%s'" % $gold40
+
+    &50
+      background-color: $gold50
+      &:before
+        content: "'%s'" % $gold50
+
+    &60
+      background-color: $gold60
+      &:before
+        content: "'%s'" % $gold60
+
+    &80
+      background-color: $gold80
+      &:before
+        content: "'%s'" % $gold80
+
+.colour-swatch__label
+  position: absolute;
+
+  &--hue
+    font-size: .8125rem
+    left: .75rem
+    top: .75rem
+
+  &--saturation
+    bottom: .75rem
+    font-weight: $normal
+    left: .75rem
