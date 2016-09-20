@@ -2,13 +2,14 @@
 // :: Components - Toolbar
 // ---------------------------------
 
-$toolbar-height           = 1.5rem /* 24px */
+$toolbar-height           ?= 1.5rem /* 24px */
+$toolbar-font             ?= $open-sans
 
 // ---------------------------------
 
 .actions-toolbar
   background: $white
-  font-family: $open-sans /* TEMPORARY */
+  font-family: $toolbar-font
   font-size: 13px
   overflow: hidden
   padding: .25rem 0

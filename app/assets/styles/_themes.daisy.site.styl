@@ -2,6 +2,13 @@
 // :: Themes - Daisy
 // ---------------------------------
 
+assign-swatch-colour($colour)
+  background-color: $colour
+  &:before
+    content: "'%s'" % $colour
+
+// ---------------------------------
+
 html, body
   height: 100%
 
@@ -72,6 +79,7 @@ html, body
 
 .colour-swatch
   color: $grey90
+  font-size: $p-font-size
   font-weight: $bold
   height: 3rem
   list-style: none
@@ -104,239 +112,149 @@ html, body
     color: $white // inverts the text on a swatch
 
   &--grey
-    background-color: $grey50
-    &:before
-      content: "'%s'" % $grey50
+    assign-swatch-colour($grey50)
 
     &10
-      background-color: $grey10
-      &:before
-        content: "'%s'" % $grey10
+      assign-swatch-colour($grey10)
 
     &20
-      background-color: $grey20
-      &:before
-        content: "'%s'" % $grey20
+      assign-swatch-colour($grey20)
 
     &40
-      background-color: $grey40
-      &:before
-        content: "'%s'" % $grey40
+      assign-swatch-colour($grey40)
 
     &50
-      background-color: $grey50
-      &:before
-        content: "'%s'" % $grey50
+      assign-swatch-colour($grey50)
 
     &60
-      background-color: $grey60
-      &:before
-        content: "'%s'" % $grey60
+      assign-swatch-colour($grey60)
 
     &80
-      background-color: $grey80
-      &:before
-        content: "'%s'" % $grey80
+      assign-swatch-colour($grey80)
 
     &90
-      background-color: $grey90
-      &:before
-        content: "'%s'" % $grey90
+      assign-swatch-colour($grey90)
 
   &--dark-blue
-    background-color: $dark-blue
-    &:before
-      content: "'%s'" % $dark-blue
+    assign-swatch-colour($dark-blue)
 
   &--teal
-    background-color: $teal50
-    &:before
-      content: "'%s'" % $teal50
+    assign-swatch-colour($teal50)
 
     &20
-      background-color: $teal20
-      &:before
-        content: "'%s'" % $teal20
+      assign-swatch-colour($teal20)
 
     &40
-      background-color: $teal40
-      &:before
-        content: "'%s'" % $teal40
+      assign-swatch-colour($teal40)
 
     &50
-      background-color: $teal50
-      &:before
-        content: "'%s'" % $teal50
+      assign-swatch-colour($teal50)
 
     &60
-      background-color: $teal60
-      &:before
-        content: "'%s'" % $teal60
+      assign-swatch-colour($teal60)
 
     &80
-      background-color: $teal80
-      &:before
-        content: "'%s'" % $teal80
+      assign-swatch-colour($teal80)
 
   &--green
-    background-color: $green50
-    &:before
-      content: "'%s'" % $green50
+    assign-swatch-colour($green50)
 
     &20
-      background-color: $green20
-      &:before
-        content: "'%s'" % $green20
+      assign-swatch-colour($green20)
 
     &40
-      background-color: $green40
-      &:before
-        content: "'%s'" % $green40
+      assign-swatch-colour($green40)
 
     &50
-      background-color: $green50
-      &:before
-        content: "'%s'" % $green50
+      assign-swatch-colour($green50)
 
     &60
-      background-color: $green60
-      &:before
-        content: "'%s'" % $green60
+      assign-swatch-colour($green60)
 
     &80
-      background-color: $green80
-      &:before
-        content: "'%s'" % $green80
+      assign-swatch-colour($green80)
 
   &--orange
-    background-color: $orange50
-    &:before
-      content: "'%s'" % $orange50
+    assign-swatch-colour($orange50)
 
     &20
-      background-color: $orange20
-      &:before
-        content: "'%s'" % $orange20
+      assign-swatch-colour($orange20)
 
     &40
-      background-color: $orange40
-      &:before
-        content: "'%s'" % $orange40
+      assign-swatch-colour($orange40)
 
     &50
-      background-color: $orange50
-      &:before
-        content: "'%s'" % $orange50
+      assign-swatch-colour($orange50)
 
     &60
-      background-color: $orange60
-      &:before
-        content: "'%s'" % $orange60
+      assign-swatch-colour($orange60)
 
     &80
-      background-color: $orange80
-      &:before
-        content: "'%s'" % $orange80
+      assign-swatch-colour($orange80)
 
   &--red
-    background-color: $red50
-    &:before
-      content: "'%s'" % $red50
+    assign-swatch-colour($red50)
 
     &20
-      background-color: $red20
-      &:before
-        content: "'%s'" % $red20
+      assign-swatch-colour($red20)
 
     &40
-      background-color: $red40
-      &:before
-        content: "'%s'" % $red40
+      assign-swatch-colour($red40)
 
     &50
-      background-color: $red50
-      &:before
-        content: "'%s'" % $red50
+      assign-swatch-colour($red50)
 
     &60
-      background-color: $red60
-      &:before
-        content: "'%s'" % $red60
+      assign-swatch-colour($red60)
 
     &80
-      background-color: $red80
-      &:before
-        content: "'%s'" % $red80
+      assign-swatch-colour($red80)
 
   &--purple
-    background-color: $purple50
-    &:before
-      content: "'%s'" % $purple50
+    assign-swatch-colour($purple50)
 
     &20
-      background-color: $purple20
-      &:before
-        content: "'%s'" % $purple20
+      assign-swatch-colour($purple20)
 
     &40
-      background-color: $purple40
-      &:before
-        content: "'%s'" % $purple40
+      assign-swatch-colour($purple40)
 
     &50
-      background-color: $purple50
-      &:before
-        content: "'%s'" % $purple50
+      assign-swatch-colour($purple50)
 
     &60
-      background-color: $purple60
-      &:before
-        content: "'%s'" % $purple60
+      assign-swatch-colour($purple60)
 
     &80
-      background-color: $purple80
-      &:before
-        content: "'%s'" % $purple80
+      assign-swatch-colour($purple80)
 
   &--gold
-    background-color: $gold50
-    &:before
-      content: "'%s'" % $gold50
+    assign-swatch-colour($gold50)
 
     &20
-      background-color: $gold20
-      &:before
-        content: "'%s'" % $gold20
+      assign-swatch-colour($gold20)
 
     &40
-      background-color: $gold40
-      &:before
-        content: "'%s'" % $gold40
+      assign-swatch-colour($gold40)
 
     &50
-      background-color: $gold50
-      &:before
-        content: "'%s'" % $gold50
+      assign-swatch-colour($gold50)
 
     &60
-      background-color: $gold60
-      &:before
-        content: "'%s'" % $gold60
+      assign-swatch-colour($gold60)
 
     &80
-      background-color: $gold80
-      &:before
-        content: "'%s'" % $gold80
+      assign-swatch-colour($gold80)
 
-.colour-swatch__label
-  position: absolute;
+  &__label
+    position: absolute;
 
-  &--hue
-    font-size: .8125rem
-    left: .75rem
-    top: .75rem
+    &--hue
+      font-size: $h4-font-size
+      left: .75rem
+      top: .75rem
 
-  &--saturation
-    bottom: .75rem
-    font-weight: $normal
-    left: .75rem
+    &--saturation
+      bottom: .75rem
+      font-weight: $normal
+      left: .75rem
