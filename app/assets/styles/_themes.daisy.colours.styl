@@ -1,6 +1,8 @@
 // ---------------------------------
-// :: Themes - Daisy
+// :: Themes - Daisy - Colours
 // ---------------------------------
+
+$swatch-padding = .9375rem
 
 assign-swatch-colour($swatch-colour)
   background-color: $swatch-colour
@@ -8,69 +10,6 @@ assign-swatch-colour($swatch-colour)
     content: "'%s'" % $swatch-colour
 
 // ---------------------------------
-
-html, body
-  height: 100%
-
-.site-main
-  background-color: $grey10
-  height: auto !important
-  min-height: 100%
-  margin-left: 15rem
-
-.site-sidebar
-  background-color: $white;
-  border-right: 1px solid #eee
-  height: 100%
-  padding: 2rem 0
-  position: fixed
-  top: 0
-  width: 15rem
-
-.site-nav
-  &__version
-    margin-top: 1.5rem
-    margin-bottom: 0.75rem
-    padding-left: 2rem
-    padding-right: 2rem
-
-  &__title
-    color: $grey80
-    font-weight: 600
-    letter-spacing: .0625rem
-    margin-top: 1.5rem
-    margin-bottom: .75rem
-    padding: 0 2rem
-    text-transform: uppercase
-
-    set-font-size($p)
-
-  &__link
-    display: block
-    font-size: .875rem
-    padding: 1rem 1rem 1rem 2rem
-    width: 100%
-
-    &:hover
-      background: whitesmoke
-
-.site-masthead
-  background: linear-gradient(to right, $purple80, $dark-blue);
-  color: $white
-  padding: 3rem
-
-  &__title
-    font-weight: 600
-
-.site-card
-  background-color: $white
-  border-radius: 3px
-  box-shadow: 0 1px 2px rgba(black, .15)
-  margin: 1rem
-  padding: 1.5rem 2.25rem
-
-
-// Colour Swatches
 
 .colour-palette
   display: inline-block
@@ -89,8 +28,8 @@ html, body
   width: 12rem
 
   &:before
-    bottom: .75rem
-    right: .75rem
+    bottom: $swatch-padding
+    right: $swatch-padding
     letter-spacing: .025rem
     position: absolute
 
@@ -250,11 +189,10 @@ html, body
     position: absolute;
 
     &--hue
-      font-size: $h4-font-size
-      left: .75rem
-      top: .75rem
+      left: $swatch-padding
+      top: $swatch-padding
 
     &--saturation
-      bottom: .75rem
+      bottom: $swatch-padding
       font-weight: $normal
-      left: .75rem
+      left: $swatch-padding
