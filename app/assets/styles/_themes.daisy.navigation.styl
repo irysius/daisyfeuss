@@ -5,59 +5,60 @@
 html, body
   height: 100%
 
-.site-main
-  background-color: $grey10
-  height: auto !important
-  min-height: 100%
-  margin-left: 15rem
+.site
+  &-main
+    background-color: $grey10
+    height: auto !important
+    min-height: 100%
+    margin-left: 15rem
 
-.site-sidebar
-  background-color: $white;
-  border-right: 1px solid #eee
-  height: 100%
-  padding: 2rem 0
-  position: fixed
-  top: 0
-  width: 15rem
+  &-sidebar
+    background-color: $white;
+    border-right: 1px solid #eee
+    height: 100%
+    padding: 2rem 0
+    position: fixed
+    top: 0
+    width: 15rem
 
-.site-nav
-  &__version
-    margin-top: 1.5rem
-    margin-bottom: 0.75rem
-    padding-left: 2rem
-    padding-right: 2rem
+  &-nav
+    &__version
+      margin-top: 1.5rem
+      margin-bottom: 0.75rem
+      padding-left: 2rem
+      padding-right: 2rem
 
-  &__title
-    color: $grey80
-    font-weight: 600
-    letter-spacing: .0625rem
-    margin-top: 1.5rem
-    margin-bottom: .75rem
-    padding: 0 2rem
-    text-transform: uppercase
+    &__title
+      color: $grey80
+      font-weight: 600
+      letter-spacing: .0625rem
+      margin-top: 1.5rem
+      margin-bottom: .75rem
+      padding: 0 2rem
+      text-transform: uppercase
 
-    set-font-size($p)
+      set-font-size($p)
 
-  &__link
-    display: block
-    font-size: .875rem
-    padding: 1rem 1rem 1rem 2rem
-    width: 100%
+    &__link
+      display: block
+      font-size: .875rem
+      padding: 1rem 1rem 1rem 2rem
+      width: 100%
 
-    &:hover
-      background: whitesmoke
+      &:hover
+        background: whitesmoke
 
-.site-masthead
-  background: linear-gradient(to right, $purple80, $dark-blue);
-  color: $white
-  padding: 3rem
+  &-masthead
+    background: linear-gradient(to right, $purple80, $dark-blue);
+    color: $white
+    padding: 3rem
 
-  &__title
-    font-weight: 600
+    &__title
+      font-weight: 600
 
-.site-card
-  background-color: $white
-  border-radius: 3px
-  box-shadow: 0 1px 2px rgba(black, .15)
-  margin: 1rem
-  padding: 1.5rem 2.25rem
+  &-card
+    background-color: $white
+    border-radius: 3px
+    box-shadow: 0 1px 2px rgba(black, .15)
+    margin: 1rem
+    padding: 1.5rem 2.25rem
