@@ -2,10 +2,10 @@
 // :: Themes - Daisy
 // ---------------------------------
 
-assign-swatch-colour($colour)
-  background-color: $colour
++assign-swatch-colour($swatch-colour)
+  background-color: $swatch-colour
   &:before
-    content: "'%s'" % $colour
+    content: "'%s'" % $swatch-colour
 
 // ---------------------------------
 
@@ -35,8 +35,6 @@ html, body
     padding-right: 2rem
 
   &__title
-    set-font-size($p)
-
     color: $grey80
     font-weight: 600
     letter-spacing: .0625rem
@@ -44,6 +42,8 @@ html, body
     margin-bottom: .75rem
     padding: 0 2rem
     text-transform: uppercase
+    
+    +set-font-size($p)
 
   &__link
     display: block
@@ -112,139 +112,139 @@ html, body
     color: $white // inverts the text on a swatch
 
   &--grey
-    assign-swatch-colour($grey50)
+    +assign-swatch-colour($grey50)
 
     &10
-      assign-swatch-colour($grey10)
+      +assign-swatch-colour($grey10)
 
     &20
-      assign-swatch-colour($grey20)
+      +assign-swatch-colour($grey20)
 
     &40
-      assign-swatch-colour($grey40)
+      +assign-swatch-colour($grey40)
 
     &50
-      assign-swatch-colour($grey50)
+      +assign-swatch-colour($grey50)
 
     &60
-      assign-swatch-colour($grey60)
+      +assign-swatch-colour($grey60)
 
     &80
-      assign-swatch-colour($grey80)
+      +assign-swatch-colour($grey80)
 
     &90
-      assign-swatch-colour($grey90)
+      +assign-swatch-colour($grey90)
 
   &--dark-blue
-    assign-swatch-colour($dark-blue)
+    +assign-swatch-colour($dark-blue)
 
   &--teal
-    assign-swatch-colour($teal50)
+    +assign-swatch-colour($teal50)
 
     &20
-      assign-swatch-colour($teal20)
+      +assign-swatch-colour($teal20)
 
     &40
-      assign-swatch-colour($teal40)
+      +assign-swatch-colour($teal40)
 
     &50
-      assign-swatch-colour($teal50)
+      +assign-swatch-colour($teal50)
 
     &60
-      assign-swatch-colour($teal60)
+      +assign-swatch-colour($teal60)
 
     &80
-      assign-swatch-colour($teal80)
+      +assign-swatch-colour($teal80)
 
   &--green
-    assign-swatch-colour($green50)
+    +assign-swatch-colour($green50)
 
     &20
-      assign-swatch-colour($green20)
+      +assign-swatch-colour($green20)
 
     &40
-      assign-swatch-colour($green40)
+      +assign-swatch-colour($green40)
 
     &50
-      assign-swatch-colour($green50)
+      +assign-swatch-colour($green50)
 
     &60
-      assign-swatch-colour($green60)
+      +assign-swatch-colour($green60)
 
     &80
-      assign-swatch-colour($green80)
+      +assign-swatch-colour($green80)
 
   &--orange
-    assign-swatch-colour($orange50)
+    +assign-swatch-colour($orange50)
 
     &20
-      assign-swatch-colour($orange20)
+      +assign-swatch-colour($orange20)
 
     &40
-      assign-swatch-colour($orange40)
+      +assign-swatch-colour($orange40)
 
     &50
-      assign-swatch-colour($orange50)
+      +assign-swatch-colour($orange50)
 
     &60
-      assign-swatch-colour($orange60)
+      +assign-swatch-colour($orange60)
 
     &80
-      assign-swatch-colour($orange80)
+      +assign-swatch-colour($orange80)
 
   &--red
-    assign-swatch-colour($red50)
+    +assign-swatch-colour($red50)
 
     &20
-      assign-swatch-colour($red20)
+      +assign-swatch-colour($red20)
 
     &40
-      assign-swatch-colour($red40)
+      +assign-swatch-colour($red40)
 
     &50
-      assign-swatch-colour($red50)
+      +assign-swatch-colour($red50)
 
     &60
-      assign-swatch-colour($red60)
+      +assign-swatch-colour($red60)
 
     &80
-      assign-swatch-colour($red80)
+      +assign-swatch-colour($red80)
 
   &--purple
-    assign-swatch-colour($purple50)
+    +assign-swatch-colour($purple50)
 
     &20
-      assign-swatch-colour($purple20)
+      +assign-swatch-colour($purple20)
 
     &40
-      assign-swatch-colour($purple40)
+      +assign-swatch-colour($purple40)
 
     &50
-      assign-swatch-colour($purple50)
+      +assign-swatch-colour($purple50)
 
     &60
-      assign-swatch-colour($purple60)
+      +assign-swatch-colour($purple60)
 
     &80
-      assign-swatch-colour($purple80)
+      +assign-swatch-colour($purple80)
 
   &--gold
-    assign-swatch-colour($gold50)
+    +assign-swatch-colour($gold50)
 
     &20
-      assign-swatch-colour($gold20)
+      +assign-swatch-colour($gold20)
 
     &40
-      assign-swatch-colour($gold40)
+      +assign-swatch-colour($gold40)
 
     &50
-      assign-swatch-colour($gold50)
+      +assign-swatch-colour($gold50)
 
     &60
-      assign-swatch-colour($gold60)
+      +assign-swatch-colour($gold60)
 
     &80
-      assign-swatch-colour($gold80)
+      +assign-swatch-colour($gold80)
 
   &__label
     position: absolute;
