@@ -28,6 +28,8 @@
 // ---------------------------------
 
 @require   "_tools.mixins"
+@require   "_tools.typography"
+@require   "_tools.grids"
 
 // ---------------------------------
 // :: Generics
@@ -36,12 +38,15 @@
 // ---------------------------------
 
 @require   "_generics.normalize"
+@require   "_generics.box-sizing"
 
 // ---------------------------------
 // :: Elements
 // Bare, unclassed HTML elements (or 'type') selectors only
 // Very rarely added to or changed after initial setup
 // ---------------------------------
+
+@require   "_elements.typography"
 
 // ---------------------------------
 // :: Objects
@@ -55,21 +60,17 @@
 // Shouldn't find any selectors with a lower specificity than one class
 // ---------------------------------
 
-
-@require   "_components.grids"
-@require   "_components.hyperlinks"
-@require   "_components.typography"
 @require   "_components.datagrids"
 @require   "_components.toolbars"
 @require   "_components.tooltips"
 @require   "_components.charts"
 
-@require   "_components.site"
-
 // ---------------------------------
 // :: Themes
 // Alternative themes to the default components
 // ---------------------------------
+
+@require   "_themes.daisy.site"
 
 // ---------------------------------
 // :: Utilities
