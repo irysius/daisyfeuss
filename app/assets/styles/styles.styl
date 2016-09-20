@@ -13,9 +13,9 @@
 
 // ---------------------------------
 // :: Settings
+// ---------------------------------
 // This holds any global settings for your project
 // Should only house settings that need to be accessed from anywhere
-// ---------------------------------
 
 @require   "_settings.global"
 @require   "_settings.colours"
@@ -23,9 +23,9 @@
 
 // ---------------------------------
 // :: Tools
+// ---------------------------------
 // Globally available tooling – namely mixins and functions.
 // Any mixin or function that does not need accessing globally should belong in the partial to which it relates
-// ---------------------------------
 
 @require   "_tools.mixins"
 @require   "_tools.typography"
@@ -33,48 +33,45 @@
 
 // ---------------------------------
 // :: Generics
+// ---------------------------------
 // First layer that actually produces any CSS
 // Usually the same across any projects you work on (normalize.css, global box-sizing rules, CSS resets...)
-// ---------------------------------
 
 @require   "_generics.normalize"
 @require   "_generics.box-sizing"
 
 // ---------------------------------
 // :: Elements
+// ---------------------------------
 // Bare, unclassed HTML elements (or 'type') selectors only
 // Very rarely added to or changed after initial setup
-// ---------------------------------
 
 @require   "_elements.typography"
 
 // ---------------------------------
 // :: Objects
+// ---------------------------------
 // First layer in which we find class-based selectors
 // Objects can range from something as simple as a .wrapper element, to layout systems..
-// ---------------------------------
 
 // ---------------------------------
 // :: Components
-// Still binding onto only classes here
-// Shouldn't find any selectors with a lower specificity than one class
 // ---------------------------------
+// A visual component of the application that a user could recognize
+// Shouldn't find any selectors with a lower specificity than one class
 
-@require   "_components.datagrids"
-@require   "_components.toolbars"
-@require   "_components.tooltips"
-@require   "_components.charts"
+@require   "_components.*"
 
 // ---------------------------------
 // :: Themes
-// Alternative themes to the default components
 // ---------------------------------
+// Alternative themes to the default components
 
 @require   "_themes.daisy.site"
 
 // ---------------------------------
 // :: Utilities
-// Inelegant and heavy-handed, and contains utility and helper classes, hacks and overrides
 // ---------------------------------
+// Inelegant and heavy-handed, and contains utility and helper classes, hacks and overrides
 
-// shame.css goes here
+// **shame.css goes here**
