@@ -17,9 +17,9 @@
 // Should only house settings that need to be accessed from anywhere
 // ---------------------------------
 
-@require   "settings/settings.global"
-@require   "settings/settings.colours"
-@require   "settings/settings.typography"
+@require   "_settings.global"
+@require   "_settings.colours"
+@require   "_settings.typography"
 
 // ---------------------------------
 // :: Tools
@@ -27,13 +27,15 @@
 // Any mixin or function that does not need accessing globally should belong in the partial to which it relates
 // ---------------------------------
 
-@require   "tools/tools.mixins"
+@require   "_tools.mixins"
 
 // ---------------------------------
 // :: Generics
 // First layer that actually produces any CSS
 // Usually the same across any projects you work on (normalize.css, global box-sizing rules, CSS resets...)
 // ---------------------------------
+
+@require   "_generics.normalize"
 
 // ---------------------------------
 // :: Elements
@@ -53,17 +55,16 @@
 // Shouldn't find any selectors with a lower specificity than one class
 // ---------------------------------
 
-@require   "components/_normalize"
 
-@require   "components/_grids"
-@require   "components/_hyperlinks"
-@require   "components/_typography"
-@require   "components/_datagrids"
-@require   "components/_toolbars"
-@require   "components/_tooltips"
-@require   "components/_charts"
+@require   "_components.grids"
+@require   "_components.hyperlinks"
+@require   "_components.typography"
+@require   "_components.datagrids"
+@require   "_components.toolbars"
+@require   "_components.tooltips"
+@require   "_components.charts"
 
-@require   "components/_site"
+@require   "_components.site"
 
 // ---------------------------------
 // :: Themes
