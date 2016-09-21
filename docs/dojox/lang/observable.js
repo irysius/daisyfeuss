@@ -128,7 +128,7 @@ dojox.lang.makeObservable = function(/*function*/onRead,/*function*/onWrite,/*fu
 					}else if(type != 'object'){ // the getters/setters can only be applied to primitives
 						cParts.push(
 							"	Public Property Let "+prop+"(val)",
-							"		Call "setName+"(me.data__,\""+prop+"\",val)",
+							"		Call "+setName+"(me.data__,\""+prop+"\",val)",
 							"	End Property",
 							"	Public Property Get "+prop,
 							"		"+prop+" = "+getName+"(me.data__,\""+prop+"\")",
