@@ -25,9 +25,19 @@ $toolbar-font             ?= $open-sans
     &:hover
       background-color: darken($dark-blue, 20%)
 
+  &--primary-inverted
+    background-color: $white
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .2)
+    color: $dark-blue
+
   &--secondary
     background-color: $grey10
     border-color: $grey50
 
     &:hover
       background-color: $grey10
+
+  &--secondary-inverted
+    background-color: darken($dark-blue, 10%)
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .2)
+    color: white
