@@ -6,10 +6,23 @@
   &-masthead
     background: linear-gradient(to right, $purple80, $dark-blue)
     color: $white
+    overflow: hidden
     padding: 3rem
+    position: relative
 
     &--intro
-      height: 21rem
+      padding-bottom: 15rem
+
+      &:before
+        bottom: 0
+        border-style: solid
+        border-width: 0 0 15rem 100rem
+        border-color: transparent transparent $grey10 transparent
+        content: ""
+        height: 0
+        right: 0
+        position: absolute
+        width: 0
 
     &__title
       font-weight: $semibold
