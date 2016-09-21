@@ -19,6 +19,10 @@
   <div id="chartBar" style="width: 45rem; height: 420px;"></div>
 </div>
 <div class="daisy-card">
+  <div class="chart-title">Compensation Timeline</div>
+  <div class="chart-legend">
+    <span id="legendBarClustered"></span>
+  </div>
   <div id="chartBarClustered" style="width: 45rem; height: 420px;"></div>
 </div>
 <div class="daisy-card">
@@ -139,8 +143,8 @@
 
   // Bar Chart - Clustered
   require(["dojox/charting/Chart", "dojox/charting/axis2d/Default", "dojox/charting/plot2d/ClusteredBars",
-         "dojo/fx/easing" , "dojox/charting/themes/Tufte", "dojo/ready"],
-  function(Chart, Default, ClusteredBars, easing, Tufte, ready){
+         "dojo/fx/easing" , "dojox/charting/themes/Tufte", "dojox/charting/widget/Legend", "dojo/ready"],
+  function(Chart, Default, ClusteredBars, easing, Tufte, Legend, ready){
   ready(function(){
     var chartBarClustered = new Chart("chartBarClustered");
     chartBarClustered.setTheme(Tufte).
@@ -148,19 +152,19 @@
       addAxis("y", { vertical: true, fixLower: "major", fixUpper: "major", includeZero: true }).
       addPlot("default", {
         type: ClusteredBars,
-        gap: 10,
+        gap: 12,
         labels: true,
         labelStyle: "outside",
         labelOffset: 15,
         // animate: { duration: 2000, easing: easing.bounceInOut },
-        stroke: {color: "white", width: 2},
-        fill: "#88a4e8"
+        stroke: {color: "white", width: 2}
       }).
       addSeries("Series A", [ 2, 1, 5, 1, 2 ] ).
       addSeries("Series B", [ 0.5, 0.75, 0.5, 3, 2 ] ).
       addSeries("Series C", [ 1, 0.5, 1, 2, 3 ] ).
       addSeries("Series D", [ 0.7, 1.5, 1.2, 1.25, 4 ] ).
       render();
+      var legendBarClustered = new Legend({chart: chartBarClustered}, "legendBarClustered");
   });
 
   // Bar Chart - Vertical

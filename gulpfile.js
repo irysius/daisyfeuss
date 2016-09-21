@@ -14,6 +14,7 @@ const
   gulpif          = require('gulp-if'),
   imagemin        = require('gulp-imagemin'),
   install         = require('gulp-install'),
+  jshint          = require('gulp-jshint'),
   newer           = require('gulp-newer'),
   notify          = require('gulp-notify'),
   nunjucksRender  = require('gulp-nunjucks-render'),
@@ -56,6 +57,11 @@ var paths = {
     temp:       basePaths.temp,
     dist:       basePaths.dist,
     s:          basePaths.src + 'assets/styles/styles.styl',
+  },
+  scripts: {
+    src:        basePaths.src + 'assets/scripts/' + '*',
+    temp:       basePaths.temp,
+    dist:       basePaths.dist,
   },
   images: {
     src:        basePaths.src + 'assets/images/' + wildCard,
@@ -124,6 +130,18 @@ gulp.task(tasks.styles, () => {
     .pipe(notify({ message: 'Styles update complete' }))
 });
 
+// Scripts
+gulp.task(tasks.scripts, () => {
+  gulp.src(paths.scripts.src)
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
+    .pipe(concat('functions.js'))
+    .pipe(config.production ? uglify() : utils.noop()) // if --production minimize
+    .pipe(config.production ? rename({suffix: '.min'}) : utils.noop()) // if --production rename
+    .pipe(config.production ? gulp.dest(paths.styles.dist) : gulp.dest(paths.styles.temp)) // exports file to appropriate folder
+    .pipe(notify({ message: 'Scripts task complete' }))
+});
+
 // Images
 gulp.task(tasks.images, () =>
   gulp.src(paths.images.src)
@@ -162,12 +180,13 @@ gulp.task('serve', [tasks.styles], () => {
     server: ['.tmp', basePaths.temp]
   })
 
-  gulp.watch([paths.images.src],  [tasks.images, reload])
-  gulp.watch([paths.styles.src],  [tasks.styles, reload])
-  gulp.watch([paths.pages.src],   [tasks.pages,  reload])
+  gulp.watch([paths.images.src],  [tasks.images,  reload])
+  gulp.watch([paths.styles.src],  [tasks.styles,  reload])
+  gulp.watch([paths.scripts.src], [tasks.scripts, reload])
+  gulp.watch([paths.pages.src],   [tasks.pages,   reload])
 });
 
 // Default task
 gulp.task('default', callback => {
-  runSequence(tasks.clean, tasks.styles, [tasks.pages, tasks.images, tasks.copy], callback);
+  runSequence(tasks.clean, tasks.styles, [tasks.scripts, tasks.pages, tasks.images, tasks.copy], callback);
 });
