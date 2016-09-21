@@ -143,14 +143,14 @@
 
   // Bar Chart - Clustered
   require(["dojox/charting/Chart", "dojox/charting/axis2d/Default", "dojox/charting/plot2d/ClusteredBars",
-         "dojo/fx/easing" , "dojox/charting/themes/Tufte", "dojox/charting/widget/Legend", "dojo/ready"],
-  function(Chart, Default, ClusteredBars, easing, Tufte, Legend, ready){
+         "dojo/fx/easing" , "functions", "dojox/charting/widget/Legend", "dojo/ready"],
+  function(Chart, Default, ClusteredBars, easing, FeussCharts, Legend, ready){
   ready(function(){
     var chartBarClustered = new Chart("chartBarClustered");
-    chartBarClustered.setTheme(Tufte).
-      addAxis("x", { fixLower: "minor", fixUpper: "minor", natural: true }).
-      addAxis("y", { vertical: true, fixLower: "major", fixUpper: "major", includeZero: true }).
-      addPlot("default", {
+    chartBarClustered.setTheme(FeussCharts)
+      .addAxis("x", { fixLower: "minor", fixUpper: "minor", natural: true })
+      .addAxis("y", { vertical: true, fixLower: "major", fixUpper: "major", includeZero: true })
+      .addPlot("default", {
         type: ClusteredBars,
         gap: 12,
         labels: true,
@@ -158,12 +158,12 @@
         labelOffset: 15,
         // animate: { duration: 2000, easing: easing.bounceInOut },
         stroke: {color: "white", width: 2}
-      }).
-      addSeries("Series A", [ 2, 1, 5, 1, 2 ] ).
-      addSeries("Series B", [ 0.5, 0.75, 0.5, 3, 2 ] ).
-      addSeries("Series C", [ 1, 0.5, 1, 2, 3 ] ).
-      addSeries("Series D", [ 0.7, 1.5, 1.2, 1.25, 4 ] ).
-      render();
+      })
+      .addSeries("Series A", [ 2, 1, 5, 1, 2 ] )
+      .addSeries("Series B", [ 0.5, 0.75, 0.5, 3, 2 ] )
+      .addSeries("Series C", [ 1, 0.5, 1, 2, 3 ] )
+      .addSeries("Series D", [ 0.7, 1.5, 1.2, 1.25, 4 ] )
+      .render();
       var legendBarClustered = new Legend({chart: chartBarClustered}, "legendBarClustered");
   });
 
