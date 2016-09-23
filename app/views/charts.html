@@ -10,20 +10,20 @@
 </div>
 
 <div class="daisy-card">
-  <div id="chartPie" style="width: 30rem; height: 240px;"></div>
+  <div id="chartPie" style="height: 240px;"></div>
 </div>
 <div class="daisy-card">
-  <div id="chartLine" style="width: 30rem; height: 240px;"></div>
+  <div id="chartLine" style="height: 240px;"></div>
 </div>
 <div class="daisy-card">
-  <div id="chartBar" style="width: 45rem; height: 420px;"></div>
+  <div id="chartBar" style=""></div>
 </div>
 <div class="daisy-card">
   <div class="chart-title">Compensation Timeline</div>
   <div class="chart-legend">
     <span id="legendBarClustered"></span>
   </div>
-  <div id="chartBarClustered" style="width: 45rem; height: 420px;"></div>
+  <div id="chartBarClustered" style="height: 600px;"></div>
 </div>
 <div class="daisy-card">
   <div id="chartBarVertical" style="width: 45rem; height: 420px;"></div>
@@ -156,6 +156,8 @@
         labels: true,
         labelStyle: "outside",
         labelOffset: 15,
+        minBarSize: 12,
+        maxBarSize: 21,
         // animate: { duration: 2000, easing: easing.bounceInOut },
         stroke: {color: "white", width: 2}
       })
