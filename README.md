@@ -8,7 +8,7 @@ A playground (currently) for front end experiments
 - [Once setup, refer to these instructions](../../wiki/How-to-Update) to ensure your project stays up-to-date
 
 #### Do you have development experience?
-1. Ensure you have [NodeJS](https://nodejs.org/en/) & [Git](https://git-scm.com/downloads) installed
+1. Ensure you have [NodeJS](https://nodejs.org/en/), [Git](https://git-scm.com/downloads), & [Bower](https://bower.io/#install-bower) installed
 2. Clone `daisyfeuss`
 3. Navigate to the directory & run `$ npm install --global gulp && npm install && bower install`
 4. Run `$ gulp` to build the project
