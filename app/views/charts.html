@@ -15,6 +15,9 @@
 </div>
 <div class="daisy-card">
   <div class="chart-title">Compensation Timeline</div>
+  <div class="chart-legend">
+    <span id="legendLine"></span>
+  </div>
   <div id="chartLine" style="height: 240px;"></div>
 </div>
 <div class="daisy-card">
@@ -74,8 +77,8 @@
   });
 
   // Line Chart
-  require(["dojox/charting/Chart", "dojox/charting/axis2d/Default", "dojox/charting/plot2d/Lines", "functions", "dojo/ready"],
-    function(Chart, Default, Lines, FeussCharts, ready){
+  require(["dojox/charting/Chart", "dojox/charting/axis2d/Default", "dojox/charting/plot2d/Lines", "dojox/charting/widget/Legend", "functions", "dojo/ready"],
+    function(Chart, Default, Lines, Legend, FeussCharts, ready){
     ready(function(){
       var chartLine = new Chart("chartLine");
       chartLine.setTheme(FeussCharts)
@@ -84,9 +87,10 @@
         })
         .addAxis("x")
         .addAxis("y", {vertical: true})
-        .addSeries("Series 1", [1, 2, 2, 3, 4, 5, 5, 7])
-        .addSeries("Series 2", [3, 7, 9, 11, 15, 15, 17, 18]);
+        .addSeries("Orcs", [1, 2, 2, 3, 4, 5, 5, 7])
+        .addSeries("Faeries", [3, 7, 9, 11, 15, 15, 17, 18]);
       chartLine.render();
+      var legendLine = new Legend({chart: chartLine}, "legendLine");
     });
   });
 
@@ -149,7 +153,16 @@
     var chartBarClustered = new Chart("chartBarClustered");
     chartBarClustered.setTheme(FeussCharts)
       .addAxis("x", { fixLower: "minor", fixUpper: "minor", natural: true })
-      .addAxis("y", { vertical: true, fixLower: "major", fixUpper: "major", includeZero: true })
+      .addAxis("y", {
+        labels: [
+          { value: 1, text: "Humans" },
+          { value: 2, text: "Orcs" },
+          { value: 3, text: "Night Elves" },
+          { value: 4, text: "Zombies" },
+          { value: 5, text: "Moogles" }
+        ],
+        vertical: true
+      })
       .addPlot("default", {
         type: ClusteredBars,
         gap: 12,
@@ -174,23 +187,21 @@
     function(Chart, Columns, ready){
     ready(function(){
       var chartBarVertical = new Chart("chartBarVertical");
-      chartBarVertical.addPlot("default", {
-        type: Columns,
-        gap: 6, // space between the bars on pixels
-        stroke: "green",
-        labels: true,
-        labelStyle: "outside",
-        labelOffset: 15,
-        minBarSize: 12,
-        maxBarSize: 21,
-        hAxis: "Sales", // name for the horisontal axes
-        vAxis: "Month",  // name for the vertical axes
-        stroke: {color: "transparent", width: 0},
-        fill: "#88a4e8"
-      });
-      chartBarVertical.addAxis("x");
-      chartBarVertical.addAxis("y", {vertical: true});
-      chartBarVertical.addSeries("Series 1", [3, 2, 5, 3, 4, 5, 5, 7, 10, 2, 3, 14]);
+      chartBarVertical.setTheme(FeussCharts)
+        .addPlot("default", {
+          type: Columns,
+          gap: 6, // space between the bars on pixels
+          labels: true,
+          labelStyle: "outside",
+          labelOffset: 15,
+          minBarSize: 12,
+          maxBarSize: 21,
+          hAxis: "Sales", // name for the horisontal axes
+          vAxis: "Month",  // name for the vertical axes
+        })
+        .addAxis("x")
+        .addAxis("y", {vertical: true})
+        .addSeries("Series 1", [3, 2, 5, 3, 4, 5, 5, 7, 10, 2, 3, 14]);
       chartBarVertical.render();
     });
   });

@@ -3,12 +3,13 @@ define(["dojox/charting/SimpleTheme", "dojo/_base/Color", "dojox/charting/themes
 		A charting theme for Dayforce
 	*/
 	themes.FeussCharts = new SimpleTheme({
+		// The chart container
 		chart: {
 			stroke: null,
-			fill: "inherit"
+			fill: "transparent"
 		},
+		// The area within the axis lines
 		plotarea: {
-			// stroke: { width: 0.2, color: "#666666" },
 			stroke: null,
 			fill: "transparent"
 		},
@@ -24,19 +25,19 @@ define(["dojox/charting/SimpleTheme", "dojo/_base/Color", "dojox/charting/themes
 				width:	1,
 				length:	2
 			},
-			font: "normal normal normal 8pt Tahoma",
+			font: "normal normal normal 8pt 'Open Sans'",
 			fontColor: "#adb7bc"
 		},
 		series: {
-			outline:   null,
-			stroke:	   {width: 1, color: "white"},
-			font: "normal normal normal 7pt Tahoma",
+			outline: null,
+			stroke: {width: 1, color: "white"},
+			font: "normal normal normal 7pt 'Open Sans'",
 			fontColor: "#292f32"
 		},
 		marker: {
-			stroke:    {width: 1, color: "black"},
-			fill:      "#292f32",
-			font: "normal normal normal 7pt Tahoma",
+			stroke: {width: 1, color: "black"},
+			fill: "#292f32",
+			font: "normal normal normal 7pt 'Open Sans'",
 			fontColor: "black"
 		},
 		colors:[
@@ -48,5 +49,6 @@ define(["dojox/charting/SimpleTheme", "dojo/_base/Color", "dojox/charting/themes
 			Color.fromHex("#ed7dab")
 		]
 	});
+
 	return themes.FeussCharts;
 });
