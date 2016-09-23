@@ -1,7 +1,6 @@
 define(["dojox/charting/SimpleTheme", "dojo/_base/Color", "dojox/charting/themes/common"], function(SimpleTheme, Color, themes){
 	/*
-		A charting theme based on the principles championed by
-		Edward Wacky.  By Alex Russell, Dojo Project Lead.
+		A charting theme for Dayforce
 	*/
 	themes.FeussCharts = new SimpleTheme({
 		chart: {
@@ -14,31 +13,29 @@ define(["dojox/charting/SimpleTheme", "dojo/_base/Color", "dojox/charting/themes
 			fill: "transparent"
 		},
 		axis: {
-			stroke: {width: 1, color: "#ccc"},
+			stroke: {width: 1, color: "#adb7bc"},
 			majorTick:{
-				color:	"black",
+				color:	"#515e63",
 				width:	1,
 				length: 5
 			},
 			minorTick: {
-				color:	"#666",
+				color:	"#adb7bc",
 				width:	1,
 				length:	2
 			},
 			font: "normal normal normal 8pt Tahoma",
-			fontColor: "#999"
+			fontColor: "#adb7bc"
 		},
 		series: {
 			outline:   null,
-			stroke:	   {width: 1, color: "black"},
-			// fill:   "#3b444b",
-			fill:      new Color([0x3b, 0x44, 0x4b, 0.85]),
+			stroke:	   {width: 1, color: "white"},
 			font: "normal normal normal 7pt Tahoma",
-			fontColor: "#717171"
+			fontColor: "#292f32"
 		},
 		marker: {
 			stroke:    {width: 1, color: "black"},
-			fill:      "#333",
+			fill:      "#292f32",
 			font: "normal normal normal 7pt Tahoma",
 			fontColor: "black"
 		},
