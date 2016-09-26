@@ -32,7 +32,7 @@
   <div id="chartBarClustered" style="height: 600px;"></div>
 </div>
 <div class="daisy-card">
-  <div id="chartBarVertical" style="width: 45rem; height: 420px;"></div>
+  <div id="chartBarVertical" style="height: 420px;"></div>
 </div>
 
 <!-- FOR LOCAL -->
@@ -82,11 +82,11 @@
     ready(function(){
       var chartLine = new Chart("chartLine");
       chartLine.setTheme(FeussCharts)
+        .addAxis("x")
+        .addAxis("y", {vertical: true})
         .addPlot("default", {
           type: Lines
         })
-        .addAxis("x")
-        .addAxis("y", {vertical: true})
         .addSeries("Orcs", [1, 2, 2, 3, 4, 5, 5, 7])
         .addSeries("Faeries", [3, 7, 9, 11, 15, 15, 17, 18]);
       chartLine.render();
@@ -115,7 +115,6 @@
           min: 0,
           title: "Sales",  // axis title text
           titleGap: 15,   // the spacing between title and corresponding axis in pixels
-          titleFontColor: "#88a4e8",
           titleOrientation: "away" //determine the title orientation to the axis, facing to the axis by “axis”, or facing away from the axis by “away”.
         })
         .addAxis("Month", {
@@ -136,7 +135,6 @@
             ],
             title: "Month",  // axis title text
             titleGap: 15,   // the spacing between title and corresponding axis in pixels
-            titleFontColor: "#88a4e8",
             titleOrientation: "axis" //determine the title orientation to the axis, facing to the axis by “axis”, or facing away from the axis by “away”.
         })
         .addSeries("Series 1", [3, 2, 2, 3, 4, 5, 5, 7, 10, 2, 3, 14],
@@ -177,30 +175,30 @@
       .addSeries("Series A", [ 2, 1, 5, 1, 2 ] )
       .addSeries("Series B", [ 0.5, 0.75, 0.5, 3, 2 ] )
       .addSeries("Series C", [ 1, 0.5, 1, 2, 3 ] )
-      .addSeries("Series D", [ 0.7, 1.5, 1.2, 1.25, 4 ] )
-      .render();
-      var legendBarClustered = new Legend({chart: chartBarClustered}, "legendBarClustered");
+      .addSeries("Series D", [ 0.7, 1.5, 1.2, 1.25, 4 ] );
+    chartBarClustered.render();
+    var legendBarClustered = new Legend({chart: chartBarClustered}, "legendBarClustered");
   });
 
   // Bar Chart - Vertical
-  require(["dojox/charting/Chart", "dojox/charting/plot2d/Columns", "dojo/ready"],
-    function(Chart, Columns, ready){
+  require(["dojox/charting/Chart", "dojox/charting/plot2d/Columns", "functions", "dojo/ready"],
+    function(Chart, Columns, FeussCharts, ready){
     ready(function(){
       var chartBarVertical = new Chart("chartBarVertical");
       chartBarVertical.setTheme(FeussCharts)
+        .addAxis("x")
+        .addAxis("y", {vertical: true})
         .addPlot("default", {
           type: Columns,
           gap: 6, // space between the bars on pixels
           labels: true,
-          labelStyle: "outside",
+          labelStyle: "default",
           labelOffset: 15,
           minBarSize: 12,
           maxBarSize: 21,
-          hAxis: "Sales", // name for the horisontal axes
-          vAxis: "Month",  // name for the vertical axes
+          hAxis: "x", // name for the horisontal axes
+          vAxis: "y",  // name for the vertical axes
         })
-        .addAxis("x")
-        .addAxis("y", {vertical: true})
         .addSeries("Series 1", [3, 2, 5, 3, 4, 5, 5, 7, 10, 2, 3, 14]);
       chartBarVertical.render();
     });
