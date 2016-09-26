@@ -108,16 +108,14 @@
           labelOffset: 15,
           minBarSize: 12,
           maxBarSize: 21,
-          hAxis: "Sales", // name for the horisontal axes
-          vAxis: "Month",  // name for the vertical axes
         })
-        .addAxis("Sales", {
+        .addAxis("x", {
           min: 0,
           title: "Sales",  // axis title text
           titleGap: 15,   // the spacing between title and corresponding axis in pixels
           titleOrientation: "away" //determine the title orientation to the axis, facing to the axis by “axis”, or facing away from the axis by “away”.
         })
-        .addAxis("Month", {
+        .addAxis("y", {
             vertical: true,
             labels: [
               { value: 1, text: "Jan" },
@@ -154,10 +152,12 @@
         majorLabels: false, // hides labels
         minorTicks: false, // hides tick marks
         minorLabels: false, // hides labels
-        microTicks: false, // hides tick marks
+        majorTicks: false, // hides tick marks
         fixLower: "minor",
         fixUpper: "minor",
-        natural: true
+        natural: true,
+        title: "Quantity",  // axis title text
+        titleOrientation: "away" //determine the title orientation to the axis, facing to the axis by “axis”, or facing away from the axis by “away”.
       })
       .addAxis("y", {
         labels: [
@@ -169,6 +169,7 @@
         ],
         minorTicks: false, // hides tick marks
         vertical: true,
+        title: "Market",  // axis title text
       })
       .addPlot("default", {
         type: ClusteredBars,
@@ -179,7 +180,7 @@
         minBarSize: 12,
         maxBarSize: 21,
         // animate: { duration: 2000, easing: easing.bounceInOut },
-        stroke: {color: "white", width: 2}
+        stroke: {color: "white", width: 2},
       })
       .addSeries("Series A", [ 2, 1, 5, 1, 2 ] )
       .addSeries("Series B", [ 0.5, 0.75, 0.5, 3, 2 ] )
@@ -195,7 +196,23 @@
     ready(function(){
       var chartBarVertical = new Chart("chartBarVertical");
       chartBarVertical.setTheme(FeussCharts)
-        .addAxis("x")
+        .addAxis("x",{
+          labels: [
+            { value: 1, text: "Humans" },
+            { value: 2, text: "Orcs" },
+            { value: 3, text: "Night Elves" },
+            { value: 4, text: "Zombies" },
+            { value: 5, text: "Moogles" },
+            { value: 6, text: "Moogles1" },
+            { value: 7, text: "Moogles2" },
+            { value: 8, text: "Moogles3" },
+            { value: 9, text: "Moogles4" },
+            { value: 10, text: "Moogles5" },
+            { value: 11, text: "Moogles6" },
+            { value: 12, text: "Moogles7" },
+          ],
+          rotation: -45
+        })
         .addAxis("y", {vertical: true})
         .addPlot("default", {
           type: Columns,
