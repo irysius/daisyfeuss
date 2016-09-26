@@ -10,29 +10,32 @@
 </div>
 
 <div class="daisy-card">
-  <div class="chart-title">Compensation Timeline</div>
+  <div class="chart-title">Chart Title</div>
   <div id="chartPie" class="chart chart--pie" style="height: 240px;"></div>
 </div>
+
 <div class="daisy-card">
-  <div class="chart-title">Compensation Timeline</div>
-  <div class="chart-legend">
-    <span id="legendLine"></span>
-  </div>
-  <div id="chartLine" style="height: 240px;"></div>
-</div>
-<div class="daisy-card">
-  <div class="chart-title">Compensation Timeline</div>
+  <div class="chart-title">Chart Title</div>
   <div id="chartBar" style="height: 600px;"></div>
 </div>
 <div class="daisy-card">
-  <div class="chart-title">Compensation Timeline</div>
+  <div class="chart-title">Chart Title</div>
   <div class="chart-legend">
     <span id="legendBarClustered"></span>
   </div>
   <div id="chartBarClustered" style="height: 600px;"></div>
 </div>
 <div class="daisy-card">
+  <div class="chart-title">Chart Title</div>
   <div id="chartBarVertical" style="height: 420px;"></div>
+</div>
+
+<div class="daisy-card">
+  <div class="chart-title">Chart Title</div>
+  <div class="chart-legend">
+    <span id="legendLine"></span>
+  </div>
+  <div id="chartLine" style="height: 240px;"></div>
 </div>
 
 <!-- FOR LOCAL -->
@@ -76,27 +79,9 @@
     });
   });
 
-  // Line Chart
-  require(["dojox/charting/Chart", "dojox/charting/axis2d/Default", "dojox/charting/plot2d/Lines", "dojox/charting/widget/Legend", "functions", "dojo/ready"],
-    function(Chart, Default, Lines, Legend, FeussCharts, ready){
-    ready(function(){
-      var chartLine = new Chart("chartLine");
-      chartLine.setTheme(FeussCharts)
-        .addAxis("x")
-        .addAxis("y", {vertical: true})
-        .addPlot("default", {
-          type: Lines
-        })
-        .addSeries("Orcs", [1, 2, 2, 3, 4, 5, 5, 7])
-        .addSeries("Faeries", [3, 7, 9, 11, 15, 15, 17, 18]);
-      chartLine.render();
-      var legendLine = new Legend({chart: chartLine}, "legendLine");
-    });
-  });
-
   // Bar Chart
-  require(["dojox/charting/Chart", "dojox/charting/plot2d/Bars", "functions", "dojo/ready"],
-    function(Chart, Bars, FeussCharts, ready){
+  require(["dojox/charting/Chart", "dojox/charting/plot2d/Bars", "dojox/charting/plot2d/Grid", "functions", "dojo/ready"],
+    function(Chart, Bars, Grid, FeussCharts, ready){
     ready(function(){
       var chartBar = new Chart("chartBar");
       chartBar.setTheme(FeussCharts)
@@ -109,11 +94,21 @@
           minBarSize: 12,
           maxBarSize: 21,
         })
+        .addPlot("Grid", {
+          type: "Grid",
+          hMajorLines: false,
+          hMinorLines: false,
+          vMajorLines: true,
+          vMinorLines: true,
+        })
         .addAxis("x", {
+          majorLabels: false, // hides labels
+          minorLabels: false, // hides labels
           min: 0,
           title: "Sales",  // axis title text
           titleGap: 15,   // the spacing between title and corresponding axis in pixels
-          titleOrientation: "away" //determine the title orientation to the axis, facing to the axis by “axis”, or facing away from the axis by “away”.
+          titleOrientation: "away", //determine the title orientation to the axis, facing to the axis by “axis”, or facing away from the axis by “away”.
+          max: 15.4, // 10% more than largest value
         })
         .addAxis("y", {
             vertical: true,
@@ -143,21 +138,19 @@
 
   // Bar Chart - Clustered
   require(["dojox/charting/Chart", "dojox/charting/axis2d/Default", "dojox/charting/plot2d/ClusteredBars",
-         "dojo/fx/easing" , "functions", "dojox/charting/widget/Legend", "dojo/ready"],
-  function(Chart, Default, ClusteredBars, easing, FeussCharts, Legend, ready){
+         "dojo/fx/easing", "dojox/charting/plot2d/Grid", "functions", "dojox/charting/widget/Legend", "dojo/ready"],
+  function(Chart, Default, ClusteredBars, easing, Grid, FeussCharts, Legend, ready){
   ready(function(){
     var chartBarClustered = new Chart("chartBarClustered");
     chartBarClustered.setTheme(FeussCharts)
       .addAxis("x", {
         majorLabels: false, // hides labels
-        minorTicks: false, // hides tick marks
         minorLabels: false, // hides labels
         majorTicks: false, // hides tick marks
-        fixLower: "minor",
-        fixUpper: "minor",
-        natural: true,
         title: "Quantity",  // axis title text
-        titleOrientation: "away" //determine the title orientation to the axis, facing to the axis by “axis”, or facing away from the axis by “away”.
+        titleOrientation: "away", //determine the title orientation to the axis, facing to the axis by “axis”, or facing away from the axis by “away”.
+        min: 0,
+        max: 55, // 10% more than largest value
       })
       .addAxis("y", {
         labels: [
@@ -173,26 +166,31 @@
       })
       .addPlot("default", {
         type: ClusteredBars,
-        gap: 12,
         labels: true,
         labelStyle: "outside",
         labelOffset: 15,
         minBarSize: 12,
         maxBarSize: 21,
         // animate: { duration: 2000, easing: easing.bounceInOut },
-        stroke: {color: "white", width: 2},
       })
-      .addSeries("Series A", [ 2, 1, 5, 1, 2 ] )
-      .addSeries("Series B", [ 0.5, 0.75, 0.5, 3, 2 ] )
-      .addSeries("Series C", [ 1, 0.5, 1, 2, 3 ] )
-      .addSeries("Series D", [ 0.7, 1.5, 1.2, 1.25, 4 ] );
+      .addPlot("Grid", {
+        type: "Grid",
+        hMajorLines: false,
+        hMinorLines: false,
+        vMajorLines: true,
+        vMinorLines: true,
+      })
+      .addSeries("Series A", [ 20, 10, 50, 10, 20 ] )
+      .addSeries("Series B", [ 2.5, 0.75, 1.5, 30, 20 ] )
+      .addSeries("Series C", [ 10, 5, 10, 20, 30 ] )
+      .addSeries("Series D", [ 5.7, 10.5, 10.2, 10.25, 40 ] );
     chartBarClustered.render();
     var legendBarClustered = new Legend({chart: chartBarClustered}, "legendBarClustered");
   });
 
   // Bar Chart - Vertical
-  require(["dojox/charting/Chart", "dojox/charting/plot2d/Columns", "functions", "dojo/ready"],
-    function(Chart, Columns, FeussCharts, ready){
+  require(["dojox/charting/Chart", "dojox/charting/plot2d/Columns", "dojox/charting/plot2d/Grid", "functions", "dojo/ready"],
+    function(Chart, Columns, Grid, FeussCharts, ready){
     ready(function(){
       var chartBarVertical = new Chart("chartBarVertical");
       chartBarVertical.setTheme(FeussCharts)
@@ -209,24 +207,61 @@
             { value: 9, text: "Moogles4" },
             { value: 10, text: "Moogles5" },
             { value: 11, text: "Moogles6" },
-            { value: 12, text: "Moogles7" },
           ],
           rotation: -45
         })
-        .addAxis("y", {vertical: true})
+        .addAxis("y", {
+          vertical: true,
+          majorLabels: false, // hides labels
+          minorLabels: false, // hides labels
+          majorTicks: false, // hides tick marks
+          min: 0,
+          max: 15.4, // 10% more than largest value
+        })
         .addPlot("default", {
           type: Columns,
           gap: 6, // space between the bars on pixels
           labels: true,
           labelStyle: "default",
           labelOffset: 15,
-          minBarSize: 12,
-          maxBarSize: 21,
+          minBarSize: 9,
+          maxBarSize: 18,
           hAxis: "x", // name for the horisontal axes
           vAxis: "y",  // name for the vertical axes
         })
-        .addSeries("Series 1", [3, 2, 5, 3, 4, 5, 5, 7, 10, 2, 3, 14]);
+        .addPlot("Grid", {
+          type: "Grid",
+          hMajorLines: true,
+          hMinorLines: true,
+          vMajorLines: false,
+          vMinorLines: false,
+        })
+        .addSeries("Series 1", [3.2, 5.7, 3, 4.5, 5, 5.4, 7, 10.2, 2.2, 3.1, 14]);
       chartBarVertical.render();
+    });
+  });
+
+  // Line Chart
+  require(["dojox/charting/Chart", "dojox/charting/axis2d/Default", "dojox/charting/plot2d/Lines", "dojox/charting/widget/Legend", "functions", "dojo/ready"],
+    function(Chart, Default, Lines, Legend, FeussCharts, ready){
+    ready(function(){
+      var chartLine = new Chart("chartLine");
+      chartLine.setTheme(FeussCharts)
+        .addAxis("x", {
+          title: "Quantity",  // axis title text
+          titleOrientation: "away", //determine the title orientation to the axis, facing to the axis by “axis”, or facing away from the axis by “away”.
+        })
+        .addAxis("y", {
+          vertical: true,
+          title: "Market",  // axis title text
+        })
+        .addPlot("default", {
+          type: Lines
+        })
+        .addSeries("Orcs", [11, 5, 12, 3, 18, 5, 5, 7])
+        .addSeries("Faeries", [3, 7, 9, 11, 15, 15, 17, 18]);
+      chartLine.render();
+      var legendLine = new Legend({chart: chartLine}, "legendLine");
     });
   });
 
