@@ -150,7 +150,15 @@
   ready(function(){
     var chartBarClustered = new Chart("chartBarClustered");
     chartBarClustered.setTheme(FeussCharts)
-      .addAxis("x", { fixLower: "minor", fixUpper: "minor", natural: true })
+      .addAxis("x", {
+        majorLabels: false, // hides labels
+        minorTicks: false, // hides tick marks
+        minorLabels: false, // hides labels
+        microTicks: false, // hides tick marks
+        fixLower: "minor",
+        fixUpper: "minor",
+        natural: true
+      })
       .addAxis("y", {
         labels: [
           { value: 1, text: "Humans" },
@@ -159,7 +167,8 @@
           { value: 4, text: "Zombies" },
           { value: 5, text: "Moogles" }
         ],
-        vertical: true
+        minorTicks: false, // hides tick marks
+        vertical: true,
       })
       .addPlot("default", {
         type: ClusteredBars,
