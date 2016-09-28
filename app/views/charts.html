@@ -92,7 +92,7 @@
           labelStyle: "outside",
           labelOffset: 15,
           minBarSize: 12,
-          maxBarSize: 21,
+          maxBarSize: 300,
         })
         .addPlot("Grid", {
           type: "Grid",
@@ -170,7 +170,8 @@
         labelStyle: "outside",
         labelOffset: 15,
         minBarSize: 12,
-        maxBarSize: 21,
+        maxBarSize: 300,
+        gap: 6, // space between the bars on pixels
         // animate: { duration: 2000, easing: easing.bounceInOut },
       })
       .addPlot("Grid", {
@@ -208,7 +209,7 @@
             { value: 10, text: "Moogles5" },
             { value: 11, text: "Moogles6" },
           ],
-          rotation: -45
+          rotation: -45,
         })
         .addAxis("y", {
           vertical: true,
@@ -224,8 +225,8 @@
           labels: true,
           labelStyle: "default",
           labelOffset: 15,
-          minBarSize: 9,
-          maxBarSize: 18,
+          minBarSize: 12,
+          maxBarSize: 300,
           hAxis: "x", // name for the horisontal axes
           vAxis: "y",  // name for the vertical axes
         })
@@ -254,6 +255,7 @@
         .addAxis("y", {
           vertical: true,
           title: "Market",  // axis title text
+          min: 0,
         })
         .addPlot("default", {
           type: Lines
