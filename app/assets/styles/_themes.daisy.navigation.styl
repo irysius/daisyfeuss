@@ -7,14 +7,11 @@ html, body
 
 .daisy
   &-main
-    background-color: $grey10
     height: auto !important
     min-height: 100%
     margin-left: 15rem
 
   &-sidebar
-    background-color: $grey10;
-    border-right: 1px solid $grey20
     height: 100%
     padding: 2rem 0
     position: fixed
@@ -49,10 +46,21 @@ html, body
         background: $grey20
         color: $grey90
 
-  &-card
+  &-modules
+  // For grouping multiple .daisy-module
+    display: flex
+
+  &-module
     background-color: $white
-    border-bottom: 1px solid $grey20
-    padding: 1.5rem 3rem
+    border-top: 1px solid $grey40
+    margin: 1.5rem 3rem 3rem
+    padding-top: .25rem
+
+    &--main
+      flex: 3
+
+    &--sidebar
+      flex: 1
 
   &-cards
     margin-top: -12rem

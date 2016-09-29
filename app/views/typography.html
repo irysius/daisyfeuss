@@ -9,7 +9,7 @@
   <h1 class="daisy-masthead__title">{{pageTitle}}</h1>
 </div>
 
-<div class="daisy-card">
+<div class="daisy-module">
   <h2>Open-Sans and Arial are the standard typefaces on desktop</h2>
   <p>
     Open Sans is a humanist sans serif typeface designed by Steve Matteson, Type Director of Ascender Corp. This version contains the complete 897 character set, which includes the standard ISO Latin 1, Latin CE, Greek and Cyrillic character sets. Open Sans was designed with an upright stress, open forms and a neutral, yet friendly appearance. It was optimized for print, web, and mobile interfaces, and has excellent legibility characteristics in its letterforms.
@@ -19,26 +19,31 @@
   </p>
 </div>
 
-<div class="daisy-card">
-  <h2>Usage</h2>
-  <p>
-    We use two versions of the Open Sans font: Regular and Light.  We have chosen Open Sans as our default font because it is crisp and clean. It enhances readability while providing the professional style that we are looking for.
-  </p>
-  <p>
-    Arial is our default font for all interactive elements (Example: Textbox, DropdownList).
-  </p>
+<div class="daisy-modules">
+
+  <div class="daisy-module daisy-module--sidebar">
+    <h2>Usage</h2>
+    <p>
+      We use two versions of the Open Sans font: Regular and Light.  We have chosen Open Sans as our default font because it is crisp and clean. It enhances readability while providing the professional style that we are looking for.
+    </p>
+    <p>
+      Arial is our default font for all interactive elements (Example: Textbox, DropdownList).
+    </p>
+  </div>
+
+  <div class="daisy-module daisy-module--main">
+    <h2>Implementation</h2>
+    <h1>h1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit a odit impedit minima sapiente architecto quod, odio voluptatibus. Reiciendis magni soluta vero dolores, et alias assumenda iusto, unde omnis ad.</h1>
+    <h2>h2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium nesciunt, aperiam rerum? Minima magni ducimus eos at, debitis quod eum sapiente rerum beatae voluptas nemo. Tenetur corporis nam quasi quas?</h2>
+    <h3>h3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae atque ut, pariatur laudantium. Quia dolor similique excepturi laudantium inventore commodi sapiente alias adipisci, saepe molestias sed, ipsum eos, sint voluptatibus!</h3>
+    <h4>h4 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur hic eveniet distinctio beatae molestiae suscipit, atque aliquam, accusantium, adipisci fuga magni, fugit cupiditate. Consequuntur distinctio facilis consectetur reiciendis vero eaque!</h4>
+    <p>Paragraph Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi autem ipsam unde veritatis illum similique, placeat cumque recusandae repellendus quas laboriosam, amet! Modi dolores quis, fugiat reprehenderit voluptatibus numquam nam?</p>
+  </div>
+
 </div>
 
-<div class="daisy-card">
-  <h2>Implementation</h2>
-  <h1>h1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit a odit impedit minima sapiente architecto quod, odio voluptatibus. Reiciendis magni soluta vero dolores, et alias assumenda iusto, unde omnis ad.</h1>
-  <h2>h2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium nesciunt, aperiam rerum? Minima magni ducimus eos at, debitis quod eum sapiente rerum beatae voluptas nemo. Tenetur corporis nam quasi quas?</h2>
-  <h3>h3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae atque ut, pariatur laudantium. Quia dolor similique excepturi laudantium inventore commodi sapiente alias adipisci, saepe molestias sed, ipsum eos, sint voluptatibus!</h3>
-  <h4>h4 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur hic eveniet distinctio beatae molestiae suscipit, atque aliquam, accusantium, adipisci fuga magni, fugit cupiditate. Consequuntur distinctio facilis consectetur reiciendis vero eaque!</h4>
-  <p>Paragraph Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi autem ipsam unde veritatis illum similique, placeat cumque recusandae repellendus quas laboriosam, amet! Modi dolores quis, fugiat reprehenderit voluptatibus numquam nam?</p>
-</div>
 <div style="display: flex;">
-  <div class="daisy-card" style="font-size: 12px; font-family: Open Sans; flex: 1; width: 50%;">
+  <div class="daisy-module" style="font-size: 12px; font-family: Open Sans; flex: 1; width: 50%;">
     <h3>Open Sans</h3>
     <p>A B C D E F</p>
     <p>G H I J K L M</p>
@@ -52,7 +57,7 @@
     <p>The quick brown fox jumps over the lazy dog.</p>
   </div>
 
-  <div class="daisy-card" style="font-size: 12px; font-family: Arial; flex: 1; width: 50%;">
+  <div class="daisy-module" style="font-size: 12px; font-family: Arial; flex: 1; width: 50%;">
     <h3>Arial</h3>
     <p>A B C D E F</p>
     <p>G H I J K L M</p>
