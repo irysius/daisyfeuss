@@ -104,6 +104,8 @@
         .addAxis("x", {
           majorLabels: false, // hides labels
           minorLabels: false, // hides labels
+          majorTickStep: 10,
+          minorTickStep: 5,
           min: 0,
           title: "Sales",  // axis title text
           titleGap: 15,   // the spacing between title and corresponding axis in pixels
@@ -147,6 +149,8 @@
         majorLabels: false, // hides labels
         minorLabels: false, // hides labels
         majorTicks: false, // hides tick marks
+        majorTickStep: 10,
+        minorTickStep: 5,
         title: "Quantity",  // axis title text
         titleOrientation: "away", //determine the title orientation to the axis, facing to the axis by “axis”, or facing away from the axis by “away”.
         min: 0,
@@ -161,6 +165,7 @@
           { value: 5, text: "Moogles" }
         ],
         minorTicks: false, // hides tick marks
+        majorTicks: false, // hides tick marks
         vertical: true,
         title: "Market",  // axis title text
       })
@@ -216,6 +221,8 @@
           majorLabels: false, // hides labels
           minorLabels: false, // hides labels
           majorTicks: false, // hides tick marks
+          majorTickStep: 10,
+          minorTickStep: 5,
           min: 0,
           max: 15.4, // 10% more than largest value
         })
@@ -224,7 +231,7 @@
           gap: 6, // space between the bars on pixels
           labels: true,
           labelStyle: "default",
-          labelOffset: 15,
+          labelOffset: 21,
           minBarSize: 12,
           maxBarSize: 300,
           hAxis: "x", // name for the horisontal axes

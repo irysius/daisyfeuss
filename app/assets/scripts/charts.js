@@ -19,7 +19,7 @@ define(["dojox/charting/Theme", "dojo/_base/Color", "dojox/charting/themes/commo
 			tick: {	// used as a foundation for all ticks
 				color:     "#adb7bc",
 				position:  "center",
-				font:      "normal normal normal 8pt 'Open Sans', Helvetica, Arial, sans-serif",	// labels on axis
+				font:      "normal normal normal .75rem 'Open Sans', Helvetica, Arial, sans-serif",	// labels on axis
 				fontColor: "#292f32"	// color of labels
 			},
 			majorTick:{
@@ -32,20 +32,20 @@ define(["dojox/charting/Theme", "dojo/_base/Color", "dojox/charting/themes/commo
 				width:	1,
 				length:	2
 			},
-			font: "normal normal normal 8pt 'Open Sans', Helvetica, Arial, sans-serif",
+			font: "normal normal normal .75rem 'Open Sans', Helvetica, Arial, sans-serif",
 			fontColor: "#adb7bc"
 		},
 		// The number at the end of the bars
 		series: {
 			outline: null,
 			stroke: {width: 1, color: "white"},
-			font: "normal normal normal 9pt 'Open Sans', Helvetica, Arial, sans-serif",
+			font: "normal normal normal .75rem 'Open Sans', Helvetica, Arial, sans-serif",
 			fontColor: "#515e63"
 		},
 		marker: {
 			stroke: {width: 1, color: "black"},
 			fill: "#292f32",
-			font: "normal normal normal 9pt 'Open Sans', Helvetica, Arial, sans-serif",
+			font: "normal normal normal .875rem 'Open Sans', Helvetica, Arial, sans-serif",
 			fontColor: "black"
 		},
 		colors:[
