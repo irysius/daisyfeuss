@@ -10,6 +10,7 @@
   left: 0
   top: -10000px
   overflow: visible
+  max-width: 350px
 
   /* common styles for tooltip arrow */
   &:before, &:after
@@ -49,9 +50,11 @@
 
 .dijitTooltipABLeft
   &:before
-    left: 6px
+    left: 50%
+    margin-left: -5px
   &:after
-    left: 7px
+    left: 50%
+    margin-left: -4px
 
 .dijitTooltipABRight
   &:before
