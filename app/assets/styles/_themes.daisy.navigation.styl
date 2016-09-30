@@ -2,6 +2,10 @@
 // :: Themes - Daisy - Navigation
 // ---------------------------------
 
+$gutter-width               = 1rem
+
+// ---------------------------------
+
 html, body
   height: 100%
 
@@ -51,6 +55,8 @@ html, body
   &-modules
   // For grouping multiple .daisy-module
     display: flex
+    margin-left: -($gutter-width)
+    margin-right: -($gutter-width)
 
   &-module
     background-color: $white
@@ -61,6 +67,10 @@ html, body
 
     &--main
       flex: 3
+      margin-left: ($gutter-width)
+      margin-right: ($gutter-width)
 
     &--sidebar
       flex: 1
+      margin-left: ($gutter-width)
+      margin-right: ($gutter-width)
