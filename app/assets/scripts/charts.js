@@ -23,12 +23,12 @@ define(["dojox/charting/Theme", "dojo/_base/Color", "dojox/charting/themes/commo
 				fontColor: "#292f32"	// color of labels
 			},
 			majorTick:{
-				color:	"#adb7bc",
+				color:	"#dfe3e4",
 				width:	1,
 				length: 5
 			},
 			minorTick: {
-				color:	"#f2f4f4",
+				color:	"#eceeef",
 				width:	1,
 				length:	2
 			},

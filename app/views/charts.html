@@ -90,7 +90,7 @@
           gap: 6, // space between the bars on pixels
           labels: true,
           labelStyle: "outside",
-          labelOffset: 15,
+          labelOffset: 21,
           minBarSize: 12,
           maxBarSize: 300,
         })
@@ -102,15 +102,14 @@
           vMinorLines: true,
         })
         .addAxis("x", {
-          majorLabels: false, // hides labels
           minorLabels: false, // hides labels
-          majorTickStep: 10,
-          minorTickStep: 5,
+          majorTickStep: 20,
+          minorTickStep: 10,
           min: 0,
           title: "Sales",  // axis title text
           titleGap: 15,   // the spacing between title and corresponding axis in pixels
           titleOrientation: "away", //determine the title orientation to the axis, facing to the axis by “axis”, or facing away from the axis by “away”.
-          max: 15.4, // 10% more than largest value
+          max: 110, // 10% more than largest value
         })
         .addAxis("y", {
             vertical: true,
@@ -130,9 +129,11 @@
             ],
             title: "Month",  // axis title text
             titleGap: 15,   // the spacing between title and corresponding axis in pixels
-            titleOrientation: "axis" //determine the title orientation to the axis, facing to the axis by “axis”, or facing away from the axis by “away”.
+            titleOrientation: "axis", //determine the title orientation to the axis, facing to the axis by “axis”, or facing away from the axis by “away”
+            trailingSymbol: "...",
+            maxLabelCharCount: 12, // define the max count of characters in label
         })
-        .addSeries("Series 1", [3, 2, 2, 3, 4, 5, 5, 7, 10, 2, 3, 14],
+        .addSeries("Series 1", [33, 99, 25, 29, 84, 92, 52, 94, 63, 83, 95, 1],
           { plot: "default" });
       chartBar.render();
     });
@@ -146,8 +147,8 @@
     var chartBarClustered = new Chart("chartBarClustered");
     chartBarClustered.setTheme(FeussCharts)
       .addAxis("x", {
-        majorLabels: false, // hides labels
-        minorLabels: false, // hides labels
+        majorLabels: true, // shows major labels
+        minorLabels: false, // hides minor labels
         majorTicks: false, // hides tick marks
         majorTickStep: 10,
         minorTickStep: 5,
@@ -168,12 +169,14 @@
         majorTicks: false, // hides tick marks
         vertical: true,
         title: "Market",  // axis title text
+        trailingSymbol: "...",
+        maxLabelCharCount: 12, // define the max count of characters in label
       })
       .addPlot("default", {
         type: ClusteredBars,
         labels: true,
         labelStyle: "outside",
-        labelOffset: 15,
+        labelOffset: 21,
         minBarSize: 12,
         maxBarSize: 300,
         gap: 6, // space between the bars on pixels
@@ -215,16 +218,17 @@
             { value: 11, text: "Moogles6" },
           ],
           rotation: -45,
+          trailingSymbol: "...",
+          maxLabelCharCount: 12, // define the max count of characters in label
         })
         .addAxis("y", {
           vertical: true,
-          majorLabels: false, // hides labels
-          minorLabels: false, // hides labels
-          majorTicks: false, // hides tick marks
-          majorTickStep: 10,
-          minorTickStep: 5,
+          majorLabels: true, // shows major labels
+          minorLabels: false, // hides minor labels
+          majorTickStep: 40,
+          minorTickStep: 20,
           min: 0,
-          max: 15.4, // 10% more than largest value
+          max: 110, // 10% more than largest value
         })
         .addPlot("default", {
           type: Columns,
@@ -244,7 +248,7 @@
           vMajorLines: false,
           vMinorLines: false,
         })
-        .addSeries("Series 1", [3.2, 5.7, 3, 4.5, 5, 5.4, 7, 10.2, 2.2, 3.1, 14]);
+        .addSeries("Series 1", [62, 95, 44, 64.5, 99, 10.4, 59, 72.2, 91.2, 43.1, 14]);
       chartBarVertical.render();
     });
   });
