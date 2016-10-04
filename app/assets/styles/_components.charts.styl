@@ -10,6 +10,16 @@
 .chart-legend
   overflow: hidden // temporary
 
+.axis__label
+  set-font-size($p)
+
+  &--x
+    transform: rotate(-45deg)
+
+  &--y
+    transform: rotate(-90deg)
+
+// For dojo charts
 .dojoxLegendNode
   float: right
 
@@ -38,4 +48,3 @@
     margin-top: -2rem
     margin-left: -2rem
     width: 4rem
-//temporary
