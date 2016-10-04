@@ -7,8 +7,22 @@
 {% block content %}
 
 <style>
-.axis--x path {
+.axis--x path, .axis--y path {
   display: none;
+}
+
+.axis--x line, .axis--y line {
+  display: none;
+}
+
+.grid line {
+  stroke: lightgrey;
+  stroke-opacity: 0.5;
+  shape-rendering: crispEdges;
+}
+
+.grid path {
+  stroke-width: 0;
 }
 </style>
 
@@ -29,6 +43,7 @@
 
 
 <script>
+// Select SVG element
 var svg = d3.select(".chart--bar-vertical"),
     margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = +svg.attr("width") - margin.left - margin.right,
@@ -39,6 +54,14 @@ var x = d3.scaleBand().rangeRound([0, width]).padding(0.3),
 
 var g = svg.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var numberOfTicks = 6;
+
+// gridlines in y axis function
+function make_y_gridlines() {
+  return d3.axisLeft(y)
+    .ticks(numberOfTicks)
+}
 
 d3.tsv("data.tsv", function(d) {
   d.frequency = +d.frequency;
@@ -59,12 +82,12 @@ d3.tsv("data.tsv", function(d) {
       .attr("y", 12)
       .attr("x", -6)
       .attr("dy", ".35em")
-      .attr("text-anchor", "end");
+      .attr("text-anchor", "end")
 
   // Y-Axis
   g.append("g")
     .attr("class", "axis axis--y")
-    .call(d3.axisLeft(y).ticks(10, "%"))
+    .call(d3.axisLeft(y).ticks(numberOfTicks, "%"))
     .selectAll("text")
       .classed("tick__label tick__label--y", true)
     .append("text")
@@ -72,7 +95,15 @@ d3.tsv("data.tsv", function(d) {
       .attr("y", 6)
       .attr("dy", "0.71em")
       .attr("text-anchor", "end")
-      .text("Frequency");
+      .text("Frequency")
+
+  // Render the Y gridlines
+  g.append("g")
+    .attr("class", "grid")
+    .call(make_y_gridlines()
+      .tickSize(-width)
+      .tickFormat("")
+    )
 
   // Render Bars
   g.selectAll(".bar")
@@ -82,7 +113,8 @@ d3.tsv("data.tsv", function(d) {
       .attr("x", function(d) { return x(d.letter); })
       .attr("y", function(d) { return y(d.frequency); })
       .attr("width", x.bandwidth())
-      .attr("height", function(d) { return height - y(d.frequency); });
+      .attr("height", function(d) { return height - y(d.frequency); })
+
 });
 </script>
 
