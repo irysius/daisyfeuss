@@ -7,6 +7,8 @@
     <!-- <link rel="stylesheet" href="dojo/../dijit/themes/claro/claro.css"> -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="styles.min.css">
+    <!-- LOAD D3 -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
   <div class="daisy-sidebar">
@@ -27,6 +29,7 @@
   </div>
   <main class="daisy-main">
     {% block content %} {% endblock %}
+    {% block scripts %} {% endblock %}
   </main>
 </body>
 </html>
