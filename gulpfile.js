@@ -151,20 +151,12 @@ gulp.task(tasks.images, () =>
     .pipe(notify({ message: 'Images task complete' }))
 );
 
-// Install bower components and npm packages using gulp
-// TODO: Deprecate this. It seems to not do what I want it to
-gulp.task('install', () =>
-  gulp.src(['./bower.json', './package.json'])
-    .pipe(install({allowRoot: true}))
-    .pipe(notify({ message: 'Update complete' }))
-);
-
-// Copy bower_components to folder
+// Copy
 gulp.task(tasks.copy, () => {
-  gulp.src(paths.bower.src)
-    // .pipe(uglify())
-    // .pipe(concat('vendors.js'))
+  gulp.src(paths.bower.src) // Copy bower_components to folder
     .pipe(config.production ? gulp.dest(paths.bower.dist) : gulp.dest(paths.bower.temp)) // exports file to appropriate folder
+  gulp.src(basePaths.src + 'assets/data/*') // Copy data files to folder
+    .pipe(config.production ? gulp.dest(basePaths.dist) : gulp.dest(basePaths.temp)) // exports file to appropriate folder
 });
 
 // Watch files for changes & reload
