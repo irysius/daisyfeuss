@@ -10,12 +10,23 @@
 .chart-legend
   overflow: hidden // temporary
 
-.axis__label
+.bar
+  cursor: pointer
+  fill: $cyan50
+  transition: all .2s cubic-bezier(.77, 0, .175, 1)
+
+  &:hover
+    fill: $cyan40
+
+.tick__label
+  fill: $grey90
+  font-family: $text-font
   set-font-size($p)
 
   &--x
     transform: rotate(-45deg)
 
+.axis__label
   &--y
     transform: rotate(-90deg)
 
