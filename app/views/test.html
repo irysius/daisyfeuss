@@ -1,0 +1,126 @@
+<!-- charts.html -->
+{% extends "layout.html" %}
+
+{% set pageTitle = "Test" %}
+
+{% block content %}
+<style>
+  /*NOTE: divs were used instead of proper elements (h2, h3...) so that the playground would not affect this page*/
+
+  /*
+    Font Weights Reference:
+    font-weight: 300                        = light
+    font-weight: 400                        = regular / normal
+    font-weight: 600                        = semibold
+    font-weight: 700                        = bold
+  */
+
+  .daisy-main {
+    border-left: 1px solid #eee; /* to indicate where the navigation sidebar begins */
+    padding: 18px 15px;
+  }
+
+  .heading {
+    padding-bottom: 2px; /* extra 2 px to match mock requirements */
+  }
+
+  .page-title {
+    background-color: #bada55; /* to indicate bounding box */
+    color: #292f32;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.25; /* 20 * 1.25 = 25px */
+    padding-top: 18px;
+    padding-bottom: 7px;
+  }
+
+  .page-subtitle {
+    background-color: lightcoral; /* to indicate bounding box */
+    color: #515e63;
+    font-size: 10.6px; /* following the spec... */
+    font-family: "Arial"; /* following the spec... */
+    line-height: 1.8; /* 10.6 * 1.8 = 19.08px */
+    padding-bottom: 7px;
+  }
+
+  .section-wrapper {
+    padding-top: 25px;
+  }
+
+  .sub-section-wrapper {
+    padding-bottom: 25px;
+  }
+
+  .section-title {
+    background-color: gold; /* to indicate bounding box */
+    color: #292f32;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4; /* 16 * 1.4 = 22.4px */
+    padding-bottom: 7px;
+  }
+
+  .data-grid {
+    background-color: #eee;
+    height: 6rem;
+    width: 100%;
+  }
+</style>
+
+<div class="heading">
+  <div class="page-title">
+    Work Management
+  </div>
+</div> <!-- heading -->
+<div class="section-wrapper">
+
+  <div class="sub-section-wrapper">
+    <div class="heading">
+      <div class="section-title">
+        Work Assignments
+      </div> <!-- section-title -->
+    </div>
+    <div class="data-grid"></div>
+  </div> <!-- sub-section-wrapper -->
+
+  <div class="sub-section-wrapper">
+    <div class="heading">
+      <div class="section-title">
+        Non-Primary Legal Entity
+      </div> <!-- section-title -->
+    </div>
+    <div class="data-grid"></div>
+  </div> <!-- sub-section-wrapper -->
+
+</div> <!-- section-wrapper -->
+
+<div class="heading">
+  <div class="page-title">
+    Management
+  </div>
+  <div class="page-subtitle">
+    Configure the management structure by assigning manager(s) sit amet, consectetur adipisicing elit. Minus eos repellendus ipsum, animi accusamus deleniti. Aspernatur sint earum et assumenda voluptatum maxime exercitationem distinctio, provident dolorem molestiae esse, hic tempora.
+  </div>
+</div> <!-- heading -->
+<div class="section-wrapper">
+
+  <div class="sub-section-wrapper">
+    <div class="heading">
+      <div class="section-title">
+        Another Section
+      </div> <!-- section-title -->
+    </div>
+    <div class="data-grid"></div>
+  </div> <!-- sub-section-wrapper -->
+
+  <div class="sub-section-wrapper">
+    <div class="heading">
+      <div class="section-title">
+        Yet Another Section
+      </div> <!-- section-title -->
+    </div>
+    <div class="data-grid"></div>
+  </div> <!-- sub-section-wrapper -->
+
+</div> <!-- section-wrapper -->
+{% endblock %}
