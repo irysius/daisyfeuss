@@ -2,7 +2,9 @@
 // :: Components - Charts
 // ---------------------------------
 
-// Legend
+.chart-wrapper
+  background-color: $purple20
+  padding: 1.5rem
 
 .chart-title
   font-size: $h3-font-size
@@ -11,7 +13,7 @@
   overflow: hidden // temporary
 
 // TODO: WRITE THIS IN BEM
-.chart--bar-vertical:hover
+.chart--bar:hover
   .bar
     fill: $purple50
 
@@ -25,10 +27,6 @@
 
   &:hover
     fill: $purple80
-
-.chart
-  background-color: $purple20
-  padding: 1.5rem
 
 .tick__label
   fill: $grey90
