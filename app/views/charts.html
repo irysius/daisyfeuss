@@ -36,7 +36,7 @@
     <div class="chart-legend">
       <span id="legendBarClustered"></span>
     </div>
-    <svg class="chart chart--bar chart--vertical" width="960" height="240"></svg>
+    <svg class="chart chart--bar chart--vertical" width="960" height="180"></svg>
   </div>
 </div>
 {% endblock %}
@@ -47,7 +47,7 @@
 <script>
 // Select SVG element
 var svg = d3.select(".chart--bar"),
-    margin = {top: 40, right: 0, bottom: 40, left: 40},
+    margin = {top: 0, right: 0, bottom: 40, left: 40},
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -109,7 +109,7 @@ d3.tsv("data.tsv", function(d) {
   g.selectAll(".bar")
     .data(data)
     .enter().append("rect")
-      .attr("class", "bar")
+      .classed("bar", true)
       .attr("x", function(d) { return x(d.letter); })
       .attr("y", function(d) { return y(d.frequency); })
       .attr("width", x.bandwidth())
