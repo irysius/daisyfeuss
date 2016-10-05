@@ -35,7 +35,7 @@
   <div class="chart-legend">
     <span id="legendBarClustered"></span>
   </div>
-  <svg class="chart--bar-vertical" width="960" height="500"></svg>
+  <svg class="chart--bar-vertical" width="960" height="240"></svg>
 </div>
 {% endblock %}
 
@@ -55,7 +55,7 @@ var x = d3.scaleBand().rangeRound([0, width]).padding(0.3),
 var g = svg.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var numberOfTicks = 6;
+var numberOfTicks = 2;
 
 // gridlines in y axis function
 function make_y_gridlines() {
@@ -87,10 +87,10 @@ d3.tsv("data.tsv", function(d) {
   // Y-Axis
   g.append("g")
     .attr("class", "axis axis--y")
-    .call(d3.axisLeft(y).ticks(numberOfTicks, "%").tickSize(54))
+    .call(d3.axisLeft(y).ticks(numberOfTicks, "%").tickSize(margin.left))
     .selectAll("text")
       .classed("tick__label tick__label--y", true)
-      .attr("x", -54)
+      .attr("x", -margin.left)
       .attr("y", -12)
       .attr("text-anchor", "start")
 
