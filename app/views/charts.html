@@ -11,13 +11,13 @@
   display: none;
 }
 
-.axis--x line, .axis--y line {
+.axis--x line {
   display: none;
 }
 
-.grid line {
-  stroke: lightgrey;
-  stroke-opacity: 0.5;
+.grid line, .tick line {
+  stroke: #CEE9F5;
+  /*stroke-opacity: 0.5;*/
   shape-rendering: crispEdges;
 }
 
@@ -45,7 +45,7 @@
 <script>
 // Select SVG element
 var svg = d3.select(".chart--bar-vertical"),
-    margin = {top: 20, right: 20, bottom: 30, left: 40},
+    margin = {top: 20, right: 20, bottom: 30, left: 54},
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -79,29 +79,27 @@ d3.tsv("data.tsv", function(d) {
     .call(d3.axisBottom(x))
     .selectAll("text")
       .classed("tick__label tick__label--x", true)
-      .attr("y", 12)
       .attr("x", -6)
+      .attr("y", 12)
       .attr("dy", ".35em")
       .attr("text-anchor", "end")
 
   // Y-Axis
   g.append("g")
     .attr("class", "axis axis--y")
-    .call(d3.axisLeft(y).ticks(numberOfTicks, "%"))
+    .call(d3.axisLeft(y).ticks(numberOfTicks, "%").tickSize(54))
     .selectAll("text")
       .classed("tick__label tick__label--y", true)
-    .append("text")
-      // .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", "0.71em")
-      .attr("text-anchor", "end")
-      .text("Frequency")
+      .attr("x", -54)
+      .attr("y", -12)
+      .attr("text-anchor", "start")
 
   // Render the Y gridlines
   g.append("g")
     .attr("class", "grid")
     .call(make_y_gridlines()
       .tickSize(-width)
+      .tickPadding(6)
       .tickFormat("")
     )
 
