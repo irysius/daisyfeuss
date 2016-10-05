@@ -16,7 +16,7 @@
 }
 
 .grid line, .tick line {
-  stroke: #CEE9F5;
+  stroke: #d5dff7; /* purple400 */
   /*stroke-opacity: 0.5;*/
   shape-rendering: crispEdges;
 }
@@ -31,11 +31,13 @@
 </div>
 
 <div class="daisy-module">
-  <div class="chart-title">Chart Title</div>
-  <div class="chart-legend">
-    <span id="legendBarClustered"></span>
+  <div class="chart">
+    <div class="chart-title">Chart Title</div>
+    <div class="chart-legend">
+      <span id="legendBarClustered"></span>
+    </div>
+    <svg class="chart--bar-vertical" width="960" height="240"></svg>
   </div>
-  <svg class="chart--bar-vertical" width="960" height="240"></svg>
 </div>
 {% endblock %}
 

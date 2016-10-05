@@ -10,13 +10,25 @@
 .chart-legend
   overflow: hidden // temporary
 
+// TODO: WRITE THIS IN BEM
+.chart--bar-vertical:hover
+  .bar
+    fill: $purple50
+
+    &:hover
+      fill: $purple80
+
 .bar
   cursor: pointer
-  fill: $cyan60
+  fill: $purple60
   transition: all .2s cubic-bezier(.77, 0, .175, 1)
 
   &:hover
-    fill: $orange60
+    fill: $purple80
+
+.chart
+  background-color: $purple20
+  padding: 1.5rem
 
 .tick__label
   fill: $grey90
