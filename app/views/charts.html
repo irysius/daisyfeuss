@@ -47,7 +47,7 @@
 <script>
 // Select SVG element
 var svg = d3.select(".chart--bar"),
-    margin = {top: 20, right: 20, bottom: 30, left: 54},
+    margin = {top: 40, right: 0, bottom: 40, left: 40},
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -82,7 +82,7 @@ d3.tsv("data.tsv", function(d) {
     .selectAll("text")
       .classed("tick__label tick__label--x", true)
       .attr("x", -6)
-      .attr("y", 12)
+      .attr("y", 9)
       .attr("dy", ".35em")
       .attr("text-anchor", "end")
 
@@ -116,6 +116,7 @@ d3.tsv("data.tsv", function(d) {
       .attr("height", function(d) { return height - y(d.frequency); })
 
 });
+window.addEventListener('resize', Chart.render);
 </script>
 
 {% endblock %}
