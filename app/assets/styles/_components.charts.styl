@@ -16,12 +16,15 @@
   overflow: hidden // temporary
 
 // TODO: WRITE THIS IN BEM
-.chart--bar:hover
-  .bar
-    fill: $purple50
+.chart--bar
+  width: 100%
 
-    &:hover
-      fill: $purple80
+  &:hover
+    .bar
+      fill: $purple50
+
+      &:hover
+        fill: $purple80
 
 .bar
   cursor: pointer

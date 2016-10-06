@@ -70,9 +70,26 @@ d3.tsv("data.tsv", function(d) {
   return d;
 }, function(error, data) {
   if (error) throw error;
+  tsv_data = data;
 
-  x.domain(data.map(function(d) { return d.letter; }));
-  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+  // Draw for the first time to initialize.
+  redraw();
+});
+
+var tsv_data = [];
+
+// load data into variable
+d3.tsv("data.tsv", function(d) {
+  d.frequency = +d.frequency;
+  return d;
+}, function(error, data) {
+  if (error) throw error;
+  tsv_data = data;
+});
+
+function redraw() {
+  x.domain(tsv_data.map(function(d) { return d.letter; }));
+  y.domain([0, d3.max(tsv_data, function(d) { return d.frequency; })]);
 
   // X-Axis
   g.append("g")
@@ -107,15 +124,17 @@ d3.tsv("data.tsv", function(d) {
 
   // Render Bars
   g.selectAll(".bar")
-    .data(data)
+    .data(tsv_data)
     .enter().append("rect")
       .classed("bar animation-target", true)
       .attr("x", function(d) { return x(d.letter); })
       .attr("y", function(d) { return y(d.frequency); })
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y(d.frequency); })
+}
 
-});
+// Redraw based on the new size whenever the browser window is resized.
+window.addEventListener("resize", redraw);
 </script>
 
 {% endblock %}
