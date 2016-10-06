@@ -109,14 +109,13 @@ d3.tsv("data.tsv", function(d) {
   g.selectAll(".bar")
     .data(data)
     .enter().append("rect")
-      .classed("bar", true)
+      .classed("bar animation-target", true)
       .attr("x", function(d) { return x(d.letter); })
       .attr("y", function(d) { return y(d.frequency); })
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y(d.frequency); })
 
 });
-window.addEventListener('resize', Chart.render);
 </script>
 
 {% endblock %}
