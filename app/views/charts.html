@@ -51,19 +51,7 @@ var svg = d3.select(".chart--bar"),
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom;
 
-var x = d3.scaleBand().rangeRound([0, width]).padding(0.3),
-    y = d3.scaleLinear().rangeRound([height, 0]);
 
-var g = svg.append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-var numberOfTicks = 2;
-
-// gridlines in y axis function
-function make_y_gridlines() {
-  return d3.axisLeft(y)
-    .ticks(numberOfTicks)
-}
 
 // load data into variable
 d3.tsv("data.tsv", function(d) {
@@ -80,6 +68,22 @@ d3.tsv("data.tsv", function(d) {
 var tsv_data = [];
 
 function redraw() {
+  svg.selectAll("*").remove();
+
+  var x = d3.scaleBand().rangeRound([0, width]).padding(0.3),
+      y = d3.scaleLinear().rangeRound([height, 0]);
+
+  var g = svg.append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  var numberOfTicks = 2;
+
+  // gridlines in y axis function
+  function make_y_gridlines() {
+    return d3.axisLeft(y)
+      .ticks(numberOfTicks)
+  }
+
   x.domain(tsv_data.map(function(d) { return d.letter; }));
   y.domain([0, d3.max(tsv_data, function(d) { return d.frequency; })]);
 
