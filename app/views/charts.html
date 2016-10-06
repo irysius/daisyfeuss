@@ -36,7 +36,7 @@
     <div class="chart-legend">
       <span id="legendBarClustered"></span>
     </div>
-    <svg class="chart chart--bar chart--vertical" width="960" height="180"></svg>
+    <svg class="chart chart--bar chart--vertical" height="180"></svg>
   </div>
 </div>
 {% endblock %}
@@ -48,10 +48,11 @@
 // Select SVG element
 var svg = d3.select(".chart--bar"),
     margin = {top: 0, right: 0, bottom: 40, left: 40},
-    width = +svg.attr("width") - margin.left - margin.right,
+    // width = +svg.attr("width") - margin.left - margin.right,
+    width = window.innerWidth - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom;
 
-
+// width = window.innerWidth / NUMBEROFARRAYITEMS - GUTTERWIDTH
 
 // load data into variable
 d3.tsv("data.tsv", function(d) {
