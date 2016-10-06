@@ -65,7 +65,7 @@ var paths = {
   },
   images: {
     src:        basePaths.src + 'assets/images/' + wildCard,
-    temp:       basePaths.temp + 'img/',
+    temp:       basePaths.temp + 'images/',
     dist:       basePaths.dist,
   },
   bower: {
