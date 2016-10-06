@@ -65,8 +65,6 @@ function make_y_gridlines() {
     .ticks(numberOfTicks)
 }
 
-var tsv_data = [];
-
 // load data into variable
 d3.tsv("data.tsv", function(d) {
   d.frequency = +d.frequency;
@@ -78,6 +76,8 @@ d3.tsv("data.tsv", function(d) {
   // Draw for the first time to initialize.
   redraw();
 });
+
+var tsv_data = [];
 
 function redraw() {
   x.domain(tsv_data.map(function(d) { return d.letter; }));
