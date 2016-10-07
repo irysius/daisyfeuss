@@ -36,7 +36,7 @@
     <div class="chart-legend">
       <span id="legendBarClustered"></span>
     </div>
-    <svg class="chart chart--bar chart--vertical" height="180"></svg>
+    <svg class="chart chart--bar chart--vertical" height="180" onresize="redraw()"></svg>
   </div>
 </div>
 {% endblock %}
@@ -48,7 +48,6 @@
 // Select SVG element
 var svg = d3.select(".chart--bar"),
     margin = {top: 0, right: 0, bottom: 40, left: 40},
-    // width = +svg.attr("width") - margin.left - margin.right,
     width = window.innerWidth - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -126,12 +125,9 @@ function redraw() {
       .classed("bar animation-target", true)
       .attr("x", function(d) { return x(d.letter); })
       .attr("y", function(d) { return y(d.frequency); })
-      .attr("width", x.bandwidth())
+      .attr("width", (width / tsv_data.length) - 24)
       .attr("height", function(d) { return height - y(d.frequency); })
 }
-
-// Redraw based on the new size whenever the browser window is resized.
-window.addEventListener("resize", redraw);
 </script>
 
 {% endblock %}
