@@ -36,7 +36,7 @@
     <div class="chart-legend">
       <span id="legendBarClustered"></span>
     </div>
-    <svg class="chart chart--bar chart--vertical" height="180" onresize="redraw()"></svg>
+    <svg class="chart chart--bar chart--vertical" onresize="chart.resize()"></svg>
   </div>
 </div>
 {% endblock %}
@@ -45,88 +45,111 @@
 
 
 <script>
-// Select SVG element
-var svg = d3.select(".chart--bar"),
-    margin = {top: 0, right: 0, bottom: 40, left: 40},
-    width = window.innerWidth - margin.left - margin.right,
-    height = +svg.attr("height") - margin.top - margin.bottom;
 
-// width = window.innerWidth / NUMBEROFARRAYITEMS - GUTTERWIDTH
+// Truncation
+// truncaterByLength(5) returns a truncate(string) function that truncates at 5.
+// (length: number) => (value: string) => string
+function truncaterByLength(length) {
+  return function truncate(value) {
+    return value.letter.substr(0, length - 1) + (value.length > length ? '&hellip;' : '');
+  }
+}
 
-// load data into variable
-d3.tsv("data.tsv", function(d) {
-  d.frequency = +d.frequency;
-  return d;
-}, function(error, data) {
-  if (error) throw error;
-  tsv_data = data;
+var chart = Chart('data.tsv');
 
-  // Draw for the first time to initialize.
-  redraw();
-});
+function Chart(path) {
+  // Define Array
+  var tsv_data = [];
 
-var tsv_data = [];
+  // Load data into variable
+  d3.tsv(path, function(d) {
+    d.frequency = +d.frequency;
+    return d;
+  }, function(error, data) {
+    if (error) throw error;
+    tsv_data = data;
 
-function redraw() {
-  svg.selectAll("*").remove();
+    // Truncates data
+    // var truncated_data = data.map(truncaterByLength(5));
 
-  var x = d3.scaleBand().rangeRound([0, width]).padding(0.3),
-      y = d3.scaleLinear().rangeRound([height, 0]);
+    // Draw for the first time to initialize.
+    resize();
+  });
 
-  var g = svg.append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  function resize() {
+    // Select SVG element
+    var svg = d3.select(".chart--bar"),
+        margin = {top: 0, right: 0, bottom: 80, left: 40},
+        width = svg.node().clientWidth - margin.left - margin.right,
+        height = svg.node().clientHeight - margin.top - margin.bottom;
 
-  var numberOfTicks = 2;
+    svg.selectAll("*").remove();
 
-  // gridlines in y axis function
-  function make_y_gridlines() {
-    return d3.axisLeft(y)
-      .ticks(numberOfTicks)
+    var x = d3.scaleBand().rangeRound([0, width]).padding(0.3),
+        y = d3.scaleLinear().rangeRound([height, 0]);
+
+    var g = svg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var barLength = width / tsv_data.length;
+
+    var numberOfTicks = 2;
+
+    // gridlines in y axis function
+    function make_y_gridlines() {
+      return d3.axisLeft(y)
+        .ticks(numberOfTicks)
+    }
+
+    x.domain(tsv_data.map(function(d) { return d.letter; }));
+    y.domain([0, d3.max(tsv_data, function(d) { return d.frequency; })]);
+
+    // X-Axis
+    g.append("g")
+      .attr("class", "axis axis--x")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x))
+      .selectAll("text")
+        .classed("tick__label tick__label--x", true)
+        .attr("x", -3)
+        .attr("y", 9)
+        .attr("dy", ".35em")
+        .attr("text-anchor", "end")
+
+    // Y-Axis
+    g.append("g")
+      .attr("class", "axis axis--y")
+      .call(d3.axisLeft(y).ticks(numberOfTicks, "%").tickSize(margin.left))
+      .selectAll("text")
+        .classed("tick__label tick__label--y", true)
+        .attr("x", -margin.left)
+        .attr("y", -12)
+        .attr("text-anchor", "start")
+
+    // Render the Y gridlines
+    g.append("g")
+      .attr("class", "grid")
+      .call(make_y_gridlines()
+        .tickSize(-width)
+        .tickPadding(6)
+        .tickFormat("")
+      )
+
+    // Render Bars
+    g.selectAll(".bar")
+      .data(tsv_data)
+      .enter().append("rect")
+        .classed("bar animation-target", true)
+        .attr("x", function(d) { return x(d.letter); })
+        .attr("y", function(d) { return y(d.frequency); })
+        .attr("width", barLength - (barLength/4))
+        .attr("height", function(d) { return height - y(d.frequency); })
   }
 
-  x.domain(tsv_data.map(function(d) { return d.letter; }));
-  y.domain([0, d3.max(tsv_data, function(d) { return d.frequency; })]);
+  return {
+    resize: resize
+  };
 
-  // X-Axis
-  g.append("g")
-    .attr("class", "axis axis--x")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x))
-    .selectAll("text")
-      .classed("tick__label tick__label--x", true)
-      .attr("x", -6)
-      .attr("y", 9)
-      .attr("dy", ".35em")
-      .attr("text-anchor", "end")
-
-  // Y-Axis
-  g.append("g")
-    .attr("class", "axis axis--y")
-    .call(d3.axisLeft(y).ticks(numberOfTicks, "%").tickSize(margin.left))
-    .selectAll("text")
-      .classed("tick__label tick__label--y", true)
-      .attr("x", -margin.left)
-      .attr("y", -12)
-      .attr("text-anchor", "start")
-
-  // Render the Y gridlines
-  g.append("g")
-    .attr("class", "grid")
-    .call(make_y_gridlines()
-      .tickSize(-width)
-      .tickPadding(6)
-      .tickFormat("")
-    )
-
-  // Render Bars
-  g.selectAll(".bar")
-    .data(tsv_data)
-    .enter().append("rect")
-      .classed("bar animation-target", true)
-      .attr("x", function(d) { return x(d.letter); })
-      .attr("y", function(d) { return y(d.frequency); })
-      .attr("width", (width / tsv_data.length) - 24)
-      .attr("height", function(d) { return height - y(d.frequency); })
 }
 </script>
 
