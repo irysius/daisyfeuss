@@ -13,16 +13,23 @@ html, body
   &-main
     height: auto !important
     min-height: 100%
-    margin-left: 15rem
     padding-left: 1rem
     padding-right: 1rem
+
+    @media screen and (min-width: 768px)
+      margin-left: 15rem
 
   &-sidebar
     height: 100%
     padding: 3rem 0
+    overflow: hidden /* TEMP */
     position: fixed
     top: 0
-    width: 15.625rem /* 250px */
+    transition: .2s ease-in-out
+    width: 0
+
+    @media screen and (min-width: 768px)
+      width: 15.625rem /* 250px */
 
   &-nav
     &__version
@@ -54,9 +61,11 @@ html, body
 
   &-modules
   // For grouping multiple .daisy-module
-    display: flex
     margin-left: -($gutter-width)
     margin-right: -($gutter-width)
+
+    @media screen and (min-width: 768px)
+      display: flex
 
   &-module
     background-color: $white
@@ -74,3 +83,4 @@ html, body
       flex: 1
       margin-left: ($gutter-width)
       margin-right: ($gutter-width)
+      order: 2

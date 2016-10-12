@@ -51,7 +51,7 @@
 // (length: number) => (value: string) => string
 function truncaterByLength(length) {
   return function truncate(value) {
-    return value.substr(0, length - 1) + (value.length > length ? '...' : '');
+    return value.substr(0, length) + (value.length > length ? '...' : '');
   }
 }
 
@@ -63,7 +63,7 @@ function Chart(path) {
   var tsv_data = [];
 
   // Truncate Axis Label
-  var truncateAxisLabel = truncaterByLength(5);
+  var truncateAxisLabel = truncaterByLength(13);
 
   // Load data into variable
   d3.tsv(path, function(d) {
