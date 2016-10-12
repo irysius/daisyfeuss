@@ -51,15 +51,19 @@
 // (length: number) => (value: string) => string
 function truncaterByLength(length) {
   return function truncate(value) {
-    return value.letter.substr(0, length - 1) + (value.length > length ? '&hellip;' : '');
+    return value.substr(0, length - 1) + (value.length > length ? '...' : '');
   }
 }
 
 var chart = Chart('data.tsv');
+var testTrunctate
 
 function Chart(path) {
   // Define Array
   var tsv_data = [];
+
+  // Truncate Axis Label
+  var truncateAxisLabel = truncaterByLength(5);
 
   // Load data into variable
   d3.tsv(path, function(d) {
@@ -67,10 +71,9 @@ function Chart(path) {
     return d;
   }, function(error, data) {
     if (error) throw error;
-    tsv_data = data;
 
     // Truncates data
-    // var truncated_data = data.map(truncaterByLength(5));
+    tsv_data = data;
 
     // Draw for the first time to initialize.
     resize();
@@ -115,6 +118,7 @@ function Chart(path) {
         .attr("y", 9)
         .attr("dy", ".35em")
         .attr("text-anchor", "end")
+        .text(function(d) { return truncateAxisLabel(d); })
 
     // Y-Axis
     g.append("g")
