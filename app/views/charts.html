@@ -60,20 +60,20 @@ var testTrunctate
 
 function Chart(path) {
   // Define Array
-  var tsv_data = [];
+  var tsvData = [];
 
   // Truncate Axis Label
   var truncateAxisLabel = truncaterByLength(13);
 
   // Load data into variable
   d3.tsv(path, function(d) {
-    d.frequency = +d.frequency;
+    d.value = +d.value;
     return d;
   }, function(error, data) {
     if (error) throw error;
 
     // Truncates data
-    tsv_data = data;
+    tsvData = data;
 
     // Draw for the first time to initialize.
     resize();
@@ -94,7 +94,7 @@ function Chart(path) {
     var g = svg.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    var barLength = width / tsv_data.length;
+    var barLength = width / tsvData.length;
 
     var numberOfTicks = 2;
 
@@ -104,8 +104,8 @@ function Chart(path) {
         .ticks(numberOfTicks)
     }
 
-    x.domain(tsv_data.map(function(d) { return d.letter; }));
-    y.domain([0, d3.max(tsv_data, function(d) { return d.frequency; })]);
+    x.domain(tsvData.map(function(d) { return d.letter; }));
+    y.domain([0, d3.max(tsvData, function(d) { return d.value; })]);
 
     // X-Axis
     g.append("g")
@@ -141,13 +141,13 @@ function Chart(path) {
 
     // Render Bars
     g.selectAll(".bar")
-      .data(tsv_data)
+      .data(tsvData)
       .enter().append("rect")
         .classed("bar animation-target", true)
         .attr("x", function(d) { return x(d.letter); })
-        .attr("y", function(d) { return y(d.frequency); })
+        .attr("y", function(d) { return y(d.value); })
         .attr("width", barLength - (barLength/4))
-        .attr("height", function(d) { return height - y(d.frequency); })
+        .attr("height", function(d) { return height - y(d.value); })
   }
 
   return {
