@@ -104,7 +104,7 @@ function Chart(path) {
         .ticks(numberOfTicks)
     }
 
-    x.domain(tsvData.map(function(d) { return d.letter; }));
+    x.domain(tsvData.map(function(d) { return d.name; }));
     y.domain([0, d3.max(tsvData, function(d) { return d.value; })]);
 
     // X-Axis
@@ -144,10 +144,18 @@ function Chart(path) {
       .data(tsvData)
       .enter().append("rect")
         .classed("bar animation-target", true)
-        .attr("x", function(d) { return x(d.letter); })
+        .attr("x", function(d) { return x(d.name); })
         .attr("y", function(d) { return y(d.value); })
         .attr("width", barLength - (barLength/4))
         .attr("height", function(d) { return height - y(d.value); })
+
+    // Text labels at the top of each bar
+  	g.selectAll(".tick__label--x")
+  	  .enter().append("text")
+    	  .classed("label", true)
+        .attr("x", 12)
+        .attr("y", 12)
+        .text(function(d) { return d.value; })
   }
 
   return {
