@@ -108,17 +108,25 @@ function Chart(path) {
     y.domain([0, d3.max(tsvData, function(d) { return d.value; })]);
 
     // X-Axis
-    g.append("g")
+    var xAxis = g.append("g")
       .attr("class", "axis axis--x")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x))
-      .selectAll("text")
+      .call(d3.axisBottom(x));
+    
+    xAxis.selectAll("text")
         .classed("tick__label tick__label--x", true)
         .attr("x", -3)
         .attr("y", 9)
         .attr("dy", ".35em")
         .attr("text-anchor", "end")
-        .text(function(d) { return truncateAxisLabel(d); })
+        .text(function(d) { return truncateAxisLabel(d); });
+    
+    // Replaces the code you created below, now commented.
+    xAxis.append('text')
+        .attr('class', 'newclassthingifyouwantto')
+        .attr("x", 12)
+        .attr("y", 12)
+        .text("text");
 
     // Y-Axis
     g.append("g")
@@ -150,12 +158,12 @@ function Chart(path) {
         .attr("height", function(d) { return height - y(d.value); })
 
     // Text labels at the top of each bar
-  	g.selectAll(".tick__label--x")
-      .append("text")
-    	  .classed("label", true)
-        .attr("x", 12)
-        .attr("y", 12)
-        .text("text")
+  	//g.selectAll(".tick__label--x")
+    //  .append("text")
+    //	  .classed("label", true)
+     //   .attr("x", 12)
+     //   .attr("y", 12)
+     //   .text("text")
   }
 
   return {
