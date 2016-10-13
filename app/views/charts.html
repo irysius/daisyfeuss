@@ -151,11 +151,11 @@ function Chart(path) {
 
     // Text labels at the top of each bar
   	g.selectAll(".tick__label--x")
-  	  .enter().append("text")
+      .append("text")
     	  .classed("label", true)
         .attr("x", 12)
         .attr("y", 12)
-        .text(function(d) { return d.value; })
+        .text("text")
   }
 
   return {
